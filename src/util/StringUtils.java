@@ -21,7 +21,7 @@ public class StringUtils {
 
 	// 解码 解决在URL传中文值出现的乱码问题
 	public static String pareCode(String str) throws UnsupportedEncodingException {
-		return new String(str.getBytes("ISO-8859-1"), "UTF-8");
+		return new String(str.getBytes("UTF-8"), "UTF-8");
 	}
 
 }
