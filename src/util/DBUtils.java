@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class DBUtils {
 	private String driver="com.mysql.jdbc.Driver";
-	private String url="jdbc:mysql:///blog?useUnicode=true&characterEncoding=UTF-8";
+	private String url="jdbc:mysql://blog?useUnicode=true&characterEncoding=UTF-8";
 	private String user="root";
 	private String password="123456";
 	
