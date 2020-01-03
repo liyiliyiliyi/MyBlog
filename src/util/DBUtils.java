@@ -4,8 +4,8 @@ import java.sql.*;
 
 
 public class DBUtils {
-	private static String driver="com.mysql.jdbc.Driver";
-	private static String url="jdbc:mysql://myblog?useUnicode=true&characterEncoding=UTF-8";
+	private static String driver="com.mysql.cj.jdbc.Driver";
+	private static String url="jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
 	private static String user="root";
 	private static String password="123456";
 	
@@ -23,6 +23,14 @@ public class DBUtils {
 		return connection;
 	}
 
+	public static Statement getStatement() {
+		try {
+			statement = getConnection().createStatement();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return statement;
+	}
 
 	/**
 	 * 执行查询语句
