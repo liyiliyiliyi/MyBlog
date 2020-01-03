@@ -63,12 +63,6 @@ public class Article implements Comparable {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "Article [id=" + id + ", title=" + title + ", author=" + author + ", sort=" + sort + ", time=" + time
-                + ", star=" + star + ", comment=" + comment + ", visit=" + visit + ", content=" + content + "]";
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -135,6 +129,12 @@ public class Article implements Comparable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "Article [id=" + id + ", title=" + title + ", author=" + author + ", sort=" + sort + ", time=" + time
+                + ", star=" + star + ", comment=" + comment + ", visit=" + visit + ", content=" + content + "]";
     }
 
 }

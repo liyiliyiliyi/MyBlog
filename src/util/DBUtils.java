@@ -2,77 +2,58 @@ package util;
 
 import java.sql.*;
 
-
 public class DBUtils {
-	private static String driver="com.mysql.cj.jdbc.Driver";
+	private static String driver="com.mysql.jdbc.Driver";
+	//数据库的地址和名字
 	private static String url="jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
 	private static String user="root";
 	private static String password="123456";
-	
-	private static Connection connection;
-	private static Statement statement;
+
+	private static Connection connection = null;
+	private static PreparedStatement pstatement = null;
+
+	static {
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * 连接数据库
 	 * @return
 	 * @throws SQLException
 	 */
-	public static Connection getConnection() throws Exception{
-		Class.forName(driver);
-		connection=(Connection) DriverManager.getConnection(url,user,password);
-	
+	public static Connection getConnection() {
+		try {
+			connection= DriverManager.getConnection(url,user,password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		return connection;
 	}
 
-	public static Statement getStatement() {
+	/**
+	 * 获得执行sql对象的方法
+	 * @return
+	 * @throws Exception
+	 */
+	public static PreparedStatement getStatement(String sql) {
 		try {
-			statement = getConnection().createStatement();
+			pstatement = getConnection().prepareStatement(sql);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return statement;
+		return pstatement;
 	}
 
-	/**
-	 * 执行查询语句
-	 * @param sql
-	 * @return
-	 * @throws SQLException
-	 */
-	public static ResultSet doQuery(String sql){
-		try {
-			connection = getConnection();
-			statement = (Statement) connection.createStatement();
-			return statement.executeQuery(sql);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	/**
-	 * 执行增删改
-	 * @param sql
-	 * @return
-	 * @throws SQLException
-	 */
-	public int doUpdate(String sql)	throws Exception{
-		connection=getConnection();
-		statement=(Statement) connection.createStatement();
-		
-		return statement.executeUpdate(sql);
-	}
+
+
 	/**
 	 * 释放资源,
 	 */
-	public static void dispose(){
-		try {
-			if(statement!=null)
-				statement.close();
-			if(connection!=null)
-				connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-	}
 	public static void Close(Statement st, ResultSet rs, Connection conn) {
 		try {
 			if(rs != null){
@@ -101,4 +82,13 @@ public class DBUtils {
 			}
 		}
 	}
+
+	/**
+	 * 测试数据库连接
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		//   System.out.println(getStatement());
+	}
 }
+

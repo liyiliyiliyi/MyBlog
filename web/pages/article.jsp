@@ -18,7 +18,7 @@
 <link type="text/css" rel="stylesheet" href="../css/article.css" />
 <link type="text/css" rel="stylesheet" href="../css/comment.css" />
 
-<script src="./js/article.js"></script>
+<script src="../js/article.js"></script>
 
 </head>
 <body>

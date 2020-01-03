@@ -11,6 +11,7 @@ public class StringUtils {
 		return false;
 	}
 
+	//分割字符串
 	public static String cutString(String str, int begin, int end) {
 
 		if (str.length() < end || str.length() < begin)
