@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/MyBlog/css/login.css"/>
 </head>
 <body>
+<div><img id="bg-img" src="https://api.xygeng.cn/bing/1366.php" alt=""></div>
+<div id="black"></div>
 <div class="Snow">
     <canvas id="Snow"></canvas>
 </div>
@@ -37,7 +39,9 @@
                 class="form-control"
                 placeholder="用户名"
                 name="username"
-                required>
+                required
+                onfocus="bgonfocus()"
+                onblur="bgblur()">
 
         <label
                 for="inputPassword"
@@ -49,7 +53,9 @@
                 class="form-control"
                 placeholder="密码"
                 name="password"
-                required>
+                required
+                onfocus="bgonfocus()"
+                onblur="bgblur()">
 
         <button
                 class="btn btn-lg btn-primary btn-block"
@@ -62,16 +68,6 @@
                 href="/MyBlog/index.jsp">访客登录</a>
     </form>
 </div>
-
-<!-- 
-	<div id="footer">
-		<a target="_blank" 
-			href="https://github.com/Lemonreds">
-		<img src="/Blog/img/github.png"	
-		width="22px" 
-		height="22px" class="img-circle">GitHub</a>
-		by lemonreds.		
-	</div>
- -->
 </body>
+<script src="/MyBlog/js/login.js"></script>
 </html>
