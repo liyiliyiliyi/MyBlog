@@ -8,7 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>标签 | MyBlog</title>
 
-
 <!-- Bootstrap core CSS -->
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
@@ -94,7 +93,7 @@
 									<div class="c_right">
 									<img src="./img/time.png">
 									${list.time}&nbsp;&nbsp; 
-									<span class="visit"><img src="/Blog/img/visit.png">
+									<span class="visit"><img src="img/visit.png">
 									${list.visit}	</span>
 									</div>
 								</div>						

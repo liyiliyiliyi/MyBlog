@@ -110,42 +110,8 @@ public class ArticleDao implements IArticleDao {
         return null;
     }
     @Override
-    public boolean addArticle(Article a) {
-        PreparedStatement pstatement;
-        String sql = "insert into t_article values(null,?,?,?,?,?,?,?,?)";
-        int count = 0;
-        try {
-            pstatement = DBUtils.getStatement(sql);
-            pstatement.setString(1, a.getTitle());
-            pstatement.setString(2, a.getAuthor());
-            pstatement.setString(3, a.getSort());
-            pstatement.setString(4, a.getTime());
-            pstatement.setInt(5,a.getStar());
-            pstatement.setInt(6, a.getComment());
-            pstatement.setInt(7, a.getVisit());
-            pstatement.setString(8, a.getContent());
-            count = pstatement.executeUpdate();
-            DBUtils.Close(pstatement, null, null);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if(count > 0){
-            return true;
-        }
+    public void  addArticle(Article a) {
 
-        return false;
-        /*
-        statement = DBUtils.getStatement();
-        String sql = "insert into article(title,author,sort,time,start,comment,visit,content) "
-                + "values ('"+a.getTitle()+"','"+a.getAuthor()
-                +"','"+a.getSort()+"','"+a.getTime()+"','"+a.getStar()
-                +"','"+a.getComment()+"','"+a.getVisit()+"','"+a.getContent()+"')";
-        try {
-            int count = statement.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        */
     }
 
     //将文章加到delte表

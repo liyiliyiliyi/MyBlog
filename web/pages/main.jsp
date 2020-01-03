@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
 				</div>
 
 				<div class="c_center" id="person_info">
-					<img src="/MyBlog/images/header.jpg" height="130" width="130"
+					<img src="images/header.jpg" height="130" width="130"
 						alt="丢失了我的头像?" class="img-circle">
 					<h4 class="text-muted">Lemonreds</h4>
 					<h5 class="text-muted">星星和浮云.</h5>
@@ -45,7 +45,7 @@ pageEncoding="UTF-8"%>
 						<a href="../servlet/SortServlet?get=all"><span> ${sort_number} </span><br/>分类</a>
 					</div>
 					<div class="inline " >
-						<a href="/Blog/TagsServlet?get=all"><span>${tags_number}</span><br/>标签</a>
+						<a href="../servlet/TagsServlet?get=all"><span>${tags_number}</span><br/>标签</a>
 					</div>
 					
 				</div>
@@ -62,7 +62,7 @@ pageEncoding="UTF-8"%>
 								&nbsp;&nbsp;分类</a></td>
 						</tr>
 						<tr>
-							<td><a href="/Blog/TagsServlet?get=all"><span class="glyphicon glyphicon-tags"></span>
+							<td><a href="../servlet/TagServlet?get=all"><span class="glyphicon glyphicon-tags"></span>
 								&nbsp;&nbsp;标签</a></td>
 						</tr>						
 						<tr>
@@ -70,7 +70,7 @@ pageEncoding="UTF-8"%>
 								&nbsp;&nbsp;时间轴</a></td>
 						</tr>
 						<tr>
-							<td><a href="/Blog/page/about.html"><span class="glyphicon glyphicon-user"></span>
+							<td><a href="/pages/about.html"><span class="glyphicon glyphicon-user"></span>
 								&nbsp;&nbsp;关于</a></td>
 						</tr>
 					</table>
