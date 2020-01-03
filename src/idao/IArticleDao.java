@@ -1,4 +1,4 @@
-package dao;
+package idao;
 
 import java.util.List;
 import java.util.Map;
