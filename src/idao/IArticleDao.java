@@ -50,7 +50,7 @@ public interface IArticleDao {
      * @param a
      * @return
      */
-    void addArticle(Article a);
+    boolean addArticle(Article a);
 
     /**
      * 删除文章
