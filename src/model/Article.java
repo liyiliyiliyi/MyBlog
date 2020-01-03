@@ -38,6 +38,7 @@ public class Article implements Comparable {
         this.content = content;
     }
 
+
     @Override
     public int compareTo(Object o) {
         if (o instanceof Article) {

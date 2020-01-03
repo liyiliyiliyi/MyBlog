@@ -76,7 +76,8 @@
 				<br /> <br />
 				<div class="list-group">
 					<a href="#" class="list-group-item active">分类</a>
-					<!-- 这里初始化列表 -->					
+					<!-- 这里初始化列表 -->
+					//把从数据库中拿出来的文章map循环输出
 					<c:forEach var="map" items="${sort_article_map}">					
 					<div class="sort_name">
 					<!-- 分类名字 -->

@@ -22,7 +22,7 @@ import util.DBUtils;
  */
 public class ArticleDao implements IArticleDao {
 
-    //一个连接，一个接口
+    //一个连接，一个实例
     private Connection conn;
     private static IArticleDao instance;
 
@@ -137,7 +137,7 @@ public class ArticleDao implements IArticleDao {
             while (rs.next()) {
                 list.add(rs.getString(1));
             }
-            DBUtils.dispose();
+            DBUtils.Close(ps, rs,null);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

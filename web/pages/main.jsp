@@ -42,7 +42,7 @@ pageEncoding="UTF-8"%>
 						<a href="#">${article_number}<br/>日志</a>
 					</div>
 					<div class="inline ">
-						<a href="/Blog/SortServlet?get=all"><span> ${sort_number} </span><br/>分类</a>
+						<a href="../servlet/SortServlet?get=all"><span> ${sort_number} </span><br/>分类</a>
 					</div>
 					<div class="inline " >
 						<a href="/Blog/TagsServlet?get=all"><span>${tags_number}</span><br/>标签</a>
@@ -58,7 +58,7 @@ pageEncoding="UTF-8"%>
 								&nbsp;&nbsp;首页</a></td>
 						</tr>
 						<tr>	
-							<td><a href="/Blog/SortServlet?get=all"><span class="glyphicon glyphicon-list"></span>
+							<td><a href="../servlet/SortServlet?get=all"><span class="glyphicon glyphicon-list"></span>
 								&nbsp;&nbsp;分类</a></td>
 						</tr>
 						<tr>

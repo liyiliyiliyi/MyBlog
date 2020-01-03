@@ -27,7 +27,7 @@ public class ArticleService {
     }
 
     /**
-     * 获取实例
+     * 获取实例 ArticleDao
      *
      * @return
      */
@@ -176,6 +176,7 @@ public class ArticleService {
                 String sort = sorts.get(i);
                 articleBySort = dao.getArticleByColumn("sort", sort);
                 ArticleUtils.cutTime(articleBySort);
+                //设置key 和 value
                 map.put(sort, articleBySort);
             }
         } else {

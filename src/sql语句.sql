@@ -1,3 +1,4 @@
+CREATE database myblog
 use myblog;
 CREATE TABLE `article` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
