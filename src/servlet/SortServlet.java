@@ -13,7 +13,7 @@ import javafx.scene.control.Alert;
 import service.ArticleService;
 import util.StringUtils;
 
-@WebServlet("../servlet/SortServlet")
+@WebServlet("/servlet/SortServlet")
 public class SortServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
