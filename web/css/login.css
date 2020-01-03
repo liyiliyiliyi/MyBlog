@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
 body {
-	background: #eee;
+	background-image: url("https://api.xygeng.cn/bing/1366.php");
+	width: 100%;
 }
 
 .container {
