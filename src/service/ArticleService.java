@@ -113,6 +113,7 @@ public class ArticleService {
            int present_year = axis_list.get(i).getYear();
            int past_year = axis_list.get(i - 1).getYear();
 
+
            if (present_year < past_year) {
                tmp = new TimeLine();
                tmp.setId(0);
