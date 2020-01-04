@@ -127,6 +127,12 @@ public class ArticleService {
        return result;
    }
 
+    public List getAllSort() {
+        return dao.getAllSort();
+    }
+    public List<Article> getAllArticle () {
+        return dao.getAllArticle();
+    }
 
 
 }

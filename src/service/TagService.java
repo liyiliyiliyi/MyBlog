@@ -1,5 +1,8 @@
 package service;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,6 +14,7 @@ import idao.ITagDao;
 import model.Article;
 import model.Tag;
 import util.ArticleUtils;
+import util.DBUtils;
 import util.StringUtils;
 
 /**
@@ -24,6 +28,11 @@ public class TagService {
 
     private TagService() {
         dao = TagDao.getInstance();
+    }
+
+    //getAllTag()得到所有的便签
+    public List<Tag> getAllTag() {
+        return dao.getAllTag();
     }
 
     public static final TagService getInstance() {

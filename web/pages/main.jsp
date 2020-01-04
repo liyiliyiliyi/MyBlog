@@ -126,16 +126,17 @@ pageEncoding="UTF-8"%>
 				</div><!-- tag -->
 				
 				
-			<!-- admin here -->
-			<c:if test="${sessionScope.user!=null}">
+			<%--<!-- admin here <c:if test="${sessionScope.user!=null}">-->--%>
+
 			<a href="/Blog/AddServlet">
 			<span class="glyphicon glyphicon-plus">&nbsp;&nbsp;写新文章&nbsp;&nbsp;</span>
 			</a>
-			<a href="/Blog/AdminServlet">
+
+			<a href="../servlet/AdminServlet">
 			<span class="glyphicon glyphicon glyphicon-user">&nbsp;&nbsp;管理更多&nbsp;&nbsp;</span>
 			</a>
-			</c:if>
-			<!--  -->
+
+			<%--<!-- </c:if> -->--%>
 			
 			</div>
 			<div class="col-md-2" id="center_content">		

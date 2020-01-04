@@ -93,9 +93,9 @@
 										<a href="/Blog/ArticleServlet?id=${list.id}">${list.title}</a>
 									</div>
 									<div class="c_right">
-									<img src="/Blog/img/time.png">
+									<img src="images/time.png">
 									${list.time}&nbsp;&nbsp; 
-									<span class="visit"><img src="/Blog/img/visit.png">
+									<span class="visit"><img src="images/visit.png">
 									${list.visit}	</span>
 									</div>
 								</div>
