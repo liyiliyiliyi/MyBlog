@@ -9,7 +9,7 @@
 </head>
 
 <!-- preview的css -->
-<link rel="stylesheet" href="./editormd/css/style.css" />
+<link rel="stylesheet" href="editormd/css/style.css" />
  <link rel="stylesheet" href="./editormd/css/editormd.preview.css" />
 
 <!-- 引入editormd相关 -->
