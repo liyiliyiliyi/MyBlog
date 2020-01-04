@@ -7,6 +7,7 @@ import idao.ITagDao;
 import model.Article;
 import util.FailException;
 import util.Form2Bean;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -63,5 +64,14 @@ public class AdminService {
         }
         */
         return a;
+    }
+
+    //通过id得到一篇文章
+    public Article getArticle(String article_id) {
+        List<Article> list = iadao.getArticleByColumn("id", article_id);
+        if (list.size() != 0) {
+            return list.get(0);
+        }
+        return null;
     }
 }

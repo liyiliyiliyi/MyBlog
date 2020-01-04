@@ -1,5 +1,8 @@
 package service;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,6 +17,7 @@ import dao.ArticleDao;
 import model.Article;
 
 import util.ArticleUtils;
+import util.DBUtils;
 import util.StringUtils;
 
 public class ArticleService {
@@ -99,6 +103,13 @@ public class ArticleService {
     public Article getNextArticle(String time) {
         return dao.getANearArticle(time, dao.MORE);
     }
+
+    public Map getColumAndCount () {
+
+        return null;
+    }
+
+
 
 
 }

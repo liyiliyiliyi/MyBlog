@@ -13,7 +13,7 @@ CREATE TABLE `article` (
                          `sort` VARCHAR(30) NOT NULL,
                          `time` DATETIME DEFAULT '2020-01-2 00:00:00',
                          `star`  INT(11) DEFAULT '0',
-                         `comment` VARCHAR(300) DEFAULT '0',
+                         `comment` INT(11) DEFAULT '0',
                          `visit` INT(11) DEFAULT '0',
                          `content` TEXT,
                          PRIMARY KEY (`article_id`)

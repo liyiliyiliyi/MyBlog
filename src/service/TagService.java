@@ -17,9 +17,6 @@ import util.ArticleUtils;
 import util.DBUtils;
 import util.StringUtils;
 
-/**
- * TO web
- */
 public class TagService {
 
     private ITagDao dao;
