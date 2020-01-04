@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 
+import com.mysql.cj.x.protobuf.MysqlxCursor;
 import model.Article;
 
 import idao.IArticleDao;
@@ -156,8 +157,28 @@ public class ArticleDao implements IArticleDao {
 
 
     @Override
-    public List getAllArticle() {
-       return null;
+    public List<Article> getAllArticle() {
+        List<Article> list = new ArrayList();
+        Article article;
+        String sql = "select * from article";
+
+        try {
+            PreparedStatement ps = DBUtils.getStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                article = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("sort"),
+                        rs.getString("time"), rs.getInt("star"), rs.getInt("comment"), rs.getInt("visit"),
+                        rs.getString("content"));
+                list.add(article);
+            }
+            //排序
+            Collections.sort(list);
+            DBUtils.Close(ps, rs, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 
 

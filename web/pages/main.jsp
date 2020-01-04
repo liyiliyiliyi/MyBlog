@@ -66,7 +66,7 @@ pageEncoding="UTF-8"%>
 								&nbsp;&nbsp;标签</a></td>
 						</tr>						
 						<tr>
-							<td><a href="/Blog/AxisServlet"><span class="glyphicon glyphicon-book"></span>
+							<td><a href="../servlet/TimeLineServlet"><span class="glyphicon glyphicon-book"></span>
 								&nbsp;&nbsp;时间轴</a></td>
 						</tr>
 						<tr>

@@ -3,6 +3,7 @@ package util;
 import java.util.List;
 
 import model.Article;
+import model.TimeLine;
 
 
 /**
@@ -59,22 +60,22 @@ public class ArticleUtils {
 	 * @param article
 	 * @return
 	 */
-//	public static AxisArticle getAxisArticle(Article article) {
-//
-//		AxisArticle axisArticle = new AxisArticle();
-//
-//		axisArticle.setTitle(article.getTitle());
-//		axisArticle.setId(article.getId());
-//
-//		// 2017-09-20 21:27:14
-//		String year = StringUtils.cutString(article.getTime(), 0, 4);
-//		String month = StringUtils.cutString(article.getTime(), 5, 7);
-//		String day = StringUtils.cutString(article.getTime(), 8, 10);
-//
-//		axisArticle.setYear(Integer.valueOf(year));
-//		axisArticle.setMonth(Integer.valueOf(month));
-//		axisArticle.setDay(Integer.valueOf(day));
-//
-//		return axisArticle;
-//	}
+	public static TimeLine getTimeLine(Article article) {
+
+		TimeLine timeline = new TimeLine();
+
+		timeline.setTitle(article.getTitle());
+		timeline.setId(article.getId());
+
+
+		String year = StringUtils.cutString(article.getTime(), 0, 4);
+		String month = StringUtils.cutString(article.getTime(), 5, 7);
+		String day = StringUtils.cutString(article.getTime(), 8, 10);
+
+		timeline.setYear(Integer.valueOf(year));
+		timeline.setMonth(Integer.valueOf(month));
+		timeline.setDay(Integer.valueOf(day));
+
+		return timeline;
+	}
 }
