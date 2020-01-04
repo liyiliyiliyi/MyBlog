@@ -29,7 +29,7 @@
 				<div id="title"><h2><a href="/Blog/index.jsp">MyBlog</a></h2>					
 					</div>	
 							
-		   <form action="../NewArticleServlet" method="post">
+		   <form action="../servlet/NewArticleServlet" method="post">
 		   		
 		   		<div class="info" >
 		   		<!-- title -->
