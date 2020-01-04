@@ -20,6 +20,7 @@ public class VisitorService {
     public static int totalVisit() {
 
         int result = 0;
+
         String sql = "select * from visitor";
         try {
             PreparedStatement ps = DBUtils.getStatement(sql);
