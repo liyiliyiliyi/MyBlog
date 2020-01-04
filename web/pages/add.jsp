@@ -2,82 +2,29 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>新的文章 | MyBlog</title>
-	<style>
-		body {
-			margin: 0;
-			border: 0;
-			padding: 0;
-			background: #FFFFDF;
-		}
-		.title {
-			font-size: 20px;
-			margin: 10px;
-			width: 10%;
-			color: #333;
-		}
-		#title-input {
-			width: 90%;
-			height: 20px;
-			border: 1px solid #999;
-			border-radius: 3px;
-			padding: 8px;
-			color:#555;
-			outline: 0;
-			font-size: 15px;
-		}
-		.article-head {
-			font-size: 15px;
-			margin: 5px;
-			width: 7%;
-		}
-		.message-input {
-			width: 28%;
-			height: 15px;
-			padding: 5px;
-			border: 1px solid #999;
-			border-radius: 3px;
-			color:#555;
-			outline: 0;
-			font-size: 15px;
-		}
-		#msg-div {
-			margin: 10px;
-		}
-		#author {
-			width: 24%;
-		}
-		#title-div {
-			float: left;
-			width: 80%;
-		}
-		#send-div {
-			float: left;
-			width: 20%;
-		}
-		#editorView {
-			width: 90%;
-			margin: 0 auto;
-			padding: 2%;
-		}
-		#editormd {
-			width: 90%;
-			float: left;
-		}
-		#help {
-			width: 20%;
-			float: left;
-			overflow: auto;
-			height: 720px;
-		}
-	</style>
-	<link rel="stylesheet" href="./editormd/css/editormd.min.css" />
+
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!--引入jQuery-->
 	<script src="./editormd/jquery-3.4.1.min.js"></script>
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="../css/add.css" />
+
+	<link rel="stylesheet" href="./editormd/css/editormd.min.css" />
+
 	<script src="./editormd/lib/marked.min.js"></script>
 	<script src="./editormd/lib/prettify.min.js"></script>
 
@@ -89,30 +36,40 @@
 
 	<script src="./editormd/editormd.min.js"></script>
 </head>
-<body>
-<form action="../servlet/NewArticleServlet" method="post">
-	<div id="head-div">
-		<div id="title-div">
-			<div>
-				<input type="hidden" name="article_id">
-				<span class="title">标题</span>
-				<input id="title-input" type="text" name="title" value="输入文章标题" onfocus="if (value=='输入文章标题') {value=''}" onblur="if (value=='') {value='输入文章标题'}">
+<body id="body">
+<div class="container-fluid">
+	<form action="../servlet/NewArticleServlet" method="post">
+		<div id="head-div" class="row">
+			<div id="title-div" class="col-md-9">
+				<div class="input-group input-group-lg">
+					<input type="hidden" name="article_id">
+					<span class="title input-group-addon">标题</span>
+					<input class="form-control" placeholder="输入文章标题" id="title-input" type="text" name="title" value="输入文章标题" onfocus="if (value=='输入文章标题') {value=''}" onblur="if (value=='') {value='输入文章标题'}">
+				</div>
+				<div id="msg-div" class="row">
+					<input type="hidden" name="time" value="">
+					<div class="col-md-3 input-group message-group">
+						<span class="input-group-addon">作者：</span><input class="message-input form-control" placeholder="作者" type="text" id="author" disabled value="作者"></input>
+					</div>
+					<div class="col-md-3 input-group message-group">
+						<span class="input-group-addon">分类</span><input class="message-input form-control" placeholder="请输入分类" type="text" name="sort">
+					</div>
+					<div class="col-md-3 input-group message-group">
+						<span class="input-group-addon">标签</span><input class="message-input form-control" placeholder="请输入标签" type="text" name="tags">
+					</div>
+				</div>
 			</div>
-			<div id="msg-div">
-				<input type="hidden" name="time" value="">
-				<span class="article-head">作者：</span><input class="message-input" type="text" id="author" disabled value="作者"></input>
-				<span class="article-head">分类</span><input class="message-input" type="text" name="sort">
-				<span class="article-head">标签</span><input class="message-input" type="text" name="tags">
+			<div id="send-div" class="col-md-3"><input class="btn btn-success btn-lg" type="submit" value="发布文章"></div>
+		</div>
+		<div id="editorView">
+			<div id="editormd">
+				<textarea style="display:none;"></textarea>
 			</div>
-		</div>
-		<div id="send-div"><input type="submit" value="发布文章"></div>
-	</div>
-	<div id="editorView">
-		<div id="editormd">
-			<textarea style="display:none;"></textarea>
-		</div>
-		<div id="help">
-			<textarea style="display:none;" id="help-md">
+
+			<div id="help">
+				<div id="help-title"><h3>帮助文档</h3></div>
+				<div id="help-content">
+					<textarea style="display:none;" id="help-md">
 ## 快捷键
 
 撤销：<kbd>Ctrl/Command</kbd> + <kbd>Z</kbd>
@@ -138,22 +95,20 @@
 ## 文本样式
 
 
-			</textarea>
+					</textarea>
+				</div>
+			</div>
 		</div>
-	</div>
-</form>
+	</form>
+</div>
 </body>
 <script type="text/javascript">
-    var height = window.innerHeight;
-    var head = document.getElementById("head-div").offsetHeight;//获取元素实际高度
-    document.getElementsByTagName("body")[0].style.height=height;
-    document.getElementById("help").style.height=height - head;
     var testEditor;
     // var jQuery = Zepto;
     $(function() {
         testEditor = editormd("editormd", {
             width  : "75%",
-            height : height - head,
+            // height : height - head,
             path   : './editormd/lib/',
             codeFold : true,
             searchReplace : true,
@@ -179,7 +134,7 @@
 
     var md = document.getElementById("help-md").innerText;
 
-    testEditormdView = editormd.markdownToHTML("help", {
+    testEditormdView = editormd.markdownToHTML("help-content", {
         markdown        : md ,//+ "\r\n" + $("#append-test").text(),
         //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
         htmlDecode      : "style,script,iframe",  // you can filter tags decode

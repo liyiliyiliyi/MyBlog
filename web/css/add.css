@@ -1,74 +1,44 @@
-@charset "UTF-8";
 
-body {
-	background: #eee;
-	text-align:center;
+#body {
+	height: 100vh;
+	padding: 0;
 }
 
-a:link {
-	text-decoration: none;	
+#msg-div {
+	 margin: 10px;
+ }
+#msg-div .message-group {
+	float: left;
+	margin-left: 2%;
+	margin-right: 2%;
 }
 
-.c_center {
-	text-align: center;
+#send-div {
+	float: left;
+	width: 20%;
 }
 
-.c_left {
-	text-align: left;
+#head-div {
+	height: 16vh;
+	margin-top: 1vh;
 }
-
-.c_right {
-	text-align: right;
+#editorView {
+	height: 81vh;
+	margin: 0 auto;
 }
-
-.f_div {
+#editormd {
 	float: left;
 }
-
-.r_div {
-	float: right;
+#help-title {
+	height: 10vh;
+	border: 1px solid rgb(221,221,221);
+	text-align: center;
 }
-
-.editormd{
-	margin-top:50px;
-	
+#help {
+	float: left;
+	width: 25%;
 }
-.head_line {
-	border-bottom: 1px solid #177cb0;
-}
-.foot_line{
-	border-top:1px solid #C0C0C0;	
-	margin-bottom:20px;
-}
-
-
-#main {
-	width: 90%;
-	text-align:center;
-	padding-bottom:20px;
-}
-
-#title{
-	margin-top:40px;
-	margin-bottom:50px;
-	clear:both;	
-}
-.info{	
-	width:30%;
-	padding-top:40px;
-	padding-bottom:50px;
-	text-align:center;
-	clear:both;
-	margin:0 auto;
-}
-.help{
-	margin-top:20px;
-	margin-bottom:20px;
-	font-size:15px;
-}
-
-#footer {
-		margin-top:40px;
-		margin-bottom:40px;
-		text-align: center;
+#help-content {
+	height: 71vh;
+	overflow:auto;
 }
