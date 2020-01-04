@@ -75,7 +75,7 @@
 					
 					<c:choose>
 						<c:when test="${article_pre!=null}">
-							<a href="/Blog/ArticleServlet?id=${article_pre.id}">&nbsp;上一篇:${article_pre.title}</a>
+							<a href="../servlet/ArticleServlet?id=${article_pre.id}">&nbsp;上一篇:${article_pre.title}</a>
 						</c:when>					
 						<c:otherwise>
 							&nbsp;没有更早的文章了
@@ -87,7 +87,7 @@
 				
 						<c:choose>
 						<c:when test="${article_next!=null}">
-							<a href="/Blog/ArticleServlet?id=${article_next.id}">下一篇:&nbsp;${article_next.title}</a>
+							<a href="../servlet/ArticleServlet?id=${article_next.id}">下一篇:&nbsp;${article_next.title}</a>
 						</c:when>					
 						<c:otherwise>
 							&nbsp;没有更多的文章了
@@ -150,7 +150,7 @@
 			<!-- 写评论 -->
 			<div id="comment">
 			
-			<form action="/Blog/NewCommentServlet?id=${article.id}" method="post">
+			<form action="../servlet/NewCommentServlet?id=${article.id}" method="post">
 			<input  style="width:30%" class="form-control" type="text" name="w_nickname" value="热心网友"  >
 			<br/>							
 			<textarea style="resize:none; width:100%; height:180px;" name="w_content"></textarea>

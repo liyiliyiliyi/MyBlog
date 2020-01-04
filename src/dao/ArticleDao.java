@@ -82,7 +82,7 @@ public class ArticleDao implements IArticleDao {
             list = new ArrayList();
             while (rs.next()) {
                 at = new Article(rs.getInt("article_id"), rs.getString("title"), rs.getString("author"), rs.getString("sort"),
-                        rs.getString("time"), rs.getInt("star"), rs.getString("comment"), rs.getInt("visit"),
+                        rs.getString("time"), rs.getInt("star"), rs.getInt("comment"), rs.getInt("visit"),
                         rs.getString("content"));
                 list.add(at);
             }
@@ -114,10 +114,10 @@ public class ArticleDao implements IArticleDao {
             ps = DBUtils.getStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                article = new Article(rs.getInt("id"),rs.getString("title"),
+                article = new Article(rs.getInt("article_id"),rs.getString("title"),
                         rs.getString("author"), rs.getString("sort"),
                         rs.getString("time"), rs.getInt("star"),
-                        rs.getString("comment"), rs.getInt("visit"),
+                        rs.getInt("comment"), rs.getInt("visit"),
                         rs.getString("content"));
             }
             DBUtils.Close(ps, rs, null);
@@ -145,7 +145,7 @@ public class ArticleDao implements IArticleDao {
             pstatement.setString(3, a.getSort());
             pstatement.setString(4, a.getTime());
             pstatement.setInt(5,a.getStar());
-            pstatement.setString(6, a.getComment());
+            pstatement.setInt(6, a.getComment());
             pstatement.setInt(7, a.getVisit());
             pstatement.setString(8, a.getContent());
             count = pstatement.executeUpdate();
@@ -183,7 +183,7 @@ public class ArticleDao implements IArticleDao {
             ResultSet rs = pstatement.executeQuery();
             if(rs.next()) {
                 Article article = new Article(rs.getInt("article_id"), rs.getString("title"), rs.getString("author"),
-                        rs.getString("sort"), rs.getString("time"), rs.getInt("star"), rs.getString("comment"),
+                        rs.getString("sort"), rs.getString("time"), rs.getInt("star"), rs.getInt("comment"),
                         rs.getInt("visit"), rs.getString("content"));
                 DBUtils.Close(pstatement, rs, null);
                 return article;
@@ -237,5 +237,3 @@ public class ArticleDao implements IArticleDao {
     }
 
 }
-
-
