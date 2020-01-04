@@ -1,4 +1,6 @@
-package service;
+package servlet;
+
+import service.ArticleService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

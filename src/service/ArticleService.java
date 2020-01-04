@@ -81,6 +81,7 @@ public class ArticleService {
    public List  getTimeLineList() {
        // 获取数据库中的所有文章
        List<Article> articles = dao.getAllArticle();
+      
        // 用来存 时间轴文章 (一种比Article类更简单适用的对象)
        List<TimeLine> axis_list = new ArrayList();
        // Article->AxisArticle
@@ -88,16 +89,17 @@ public class ArticleService {
            TimeLine at = ArticleUtils.getTimeLine(a);
            axis_list.add(at);
        }
-       // 这里开始处理数据 文章排序是 2018-2017-2016 时间降序
-       // 因为要实现 文章+文章+year 文章+文章+year的效果 这里把year封装成一个特殊的AxisArticle对象 id=0 year =
-       // 文章截至日期
-       // 然后全部存入 result 中
-       // 在jsp判断id==0
-       // true: year输出
-       // false: 输出AxisArticle对象的
+       // 这里开始处理数据
+           // 时间降序
+           // year+文章的效果 把year封装成一个特殊的TimeLine对象 id=0 year = 大写的year
+           // 文章日期
+           // 然后全部存入 result中
+           // 在jsp判断id==0
+               // true: 特殊的TimeLine对象输出
+               // false: 输出文章对象的
        TimeLine tmp = null;
        List result = new LinkedList();
-       // 塞进去最新的一个年份 并且塞入第一个AxisArticle
+       // 塞进去最新的一个年份
        if (!axis_list.isEmpty()) {
            tmp = new TimeLine();
            tmp.setId(0);
@@ -107,6 +109,7 @@ public class ArticleService {
        }
        // 判断文章年份是不是不一样 不一样则塞一个year
        for (int i = 1; i < axis_list.size(); i++) {
+           System.out.println(axis_list.get(i).getDay());
            int present_year = axis_list.get(i).getYear();
            int past_year = axis_list.get(i - 1).getYear();
 
@@ -118,6 +121,7 @@ public class ArticleService {
            }
            result.add(axis_list.get(i));
        }
+       
        // 注意: 在list遍历里面动态修改了数组长度会出现内存溢出的情况
        return result;
    }
