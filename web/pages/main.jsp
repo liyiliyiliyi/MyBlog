@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
 				</div>
 
 				<div class="c_center" id="person_info">
-					<img src="images/header.jpg" height="130" width="130"
+					<img src="../images/header.jpg" height="130" width="130"
 						alt="丢失了我的头像?" class="img-circle">
 					<h4 class="text-muted">Lemonreds</h4>
 					<h5 class="text-muted">星星和浮云.</h5>

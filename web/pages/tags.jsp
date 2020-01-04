@@ -74,7 +74,7 @@
 				<div class="list-group">
 
 					<a href="#" class="list-group-item active">标签</a>
-					<!-- 这里初始化标签 -->					
+					<!-- 这里初始化标签数组-->
 					<c:forEach var="map" items="${id_tag_map}">					
 					<div class="tags_name">
 					<!-- 标签名字 -->

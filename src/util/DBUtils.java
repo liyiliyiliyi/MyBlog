@@ -3,7 +3,7 @@ package util;
 import java.sql.*;
 
 public class DBUtils {
-	private static String driver="com.mysql.jdbc.Driver";
+	private static String driver="com.mysql.cj.jdbc.Driver";
 	//数据库的地址和名字
 	private static String url="jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
 	private static String user="root";

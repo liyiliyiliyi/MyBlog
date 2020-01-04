@@ -45,10 +45,31 @@ public class TagDao implements ITagDao {
         return true;
     }
 
-
+    // 获取所有不重复的标签
     @Override
     public List getAllTag() {
-        return null;
+        List list = null;
+        String sql = "select distinct(tag) from tag";
+        PreparedStatement ps;
+        list = new ArrayList();
+        try {
+            ps = DBUtils.getStatement(sql);
+            ResultSet set = ps.executeQuery();
+            Tag tag;
+            while (set.next()) {
+                tag = new Tag();
+                //为了getTagByColumn函数执行，只保留String一个字母
+                tag.setTag(set.getString(1));
+                list.add(tag);
+            }
+            DBUtils.Close(ps, set, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+
+
     }
 
 
@@ -58,15 +79,14 @@ public class TagDao implements ITagDao {
        return true;
     }
 
-   //通过column关键字找一类标签
+   //通过column关键字找一类所有标签
     @Override
     public List getTagByColumn(String column, String value) {
-
-        String sql = "select * from tag where " + column + "=?";
+        //column == tag,先这样，还没找到更好的sql语句
+        String sql = "select * from tag where " + value + "=tag";
         List list = null;
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, value);
+            PreparedStatement ps = DBUtils.getStatement(sql);
             ResultSet rs = ps.executeQuery();
             list = new ArrayList();
             Tag tag;
@@ -80,6 +100,8 @@ public class TagDao implements ITagDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return list;
     }
+
 }

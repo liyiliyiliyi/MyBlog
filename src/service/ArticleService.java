@@ -73,7 +73,7 @@ public class ArticleService {
 
     //通过column关键词获得了这一类的文章
     public List<Article> getArticle (String column, String value) {
-         return dao.getArticleByColumn(column, value);
+        return dao.getArticleByColumn(column, value);
     }
 
 

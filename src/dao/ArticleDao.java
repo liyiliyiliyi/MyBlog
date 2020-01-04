@@ -98,6 +98,7 @@ public class ArticleDao implements IArticleDao {
     public void addVisit(int article_id) {
     }
 
+
     //获得上or下一篇文章
     @Override
     public Article getANearArticle(String time, int less_or_more) {
@@ -134,18 +135,6 @@ public class ArticleDao implements IArticleDao {
         }
 
         return false;
-        /*
-        statement = DBUtils.getStatement();
-        String sql = "insert into article(title,author,sort,time,start,comment,visit,content) "
-                + "values ('"+a.getTitle()+"','"+a.getAuthor()
-                +"','"+a.getSort()+"','"+a.getTime()+"','"+a.getStar()
-                +"','"+a.getComment()+"','"+a.getVisit()+"','"+a.getContent()+"')";
-        try {
-            int count = statement.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        */
     }
 
     //将文章加到delte表
