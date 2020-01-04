@@ -1,7 +1,9 @@
 package service;
 
 import dao.ArticleDao;
+import dao.TagDao;
 import idao.IArticleDao;
+import idao.ITagDao;
 import model.Article;
 import util.FailException;
 import util.Form2Bean;
@@ -12,12 +14,12 @@ import java.io.UnsupportedEncodingException;
 public class AdminService {
 
     private IArticleDao iadao;
-   // private ITagDao itdao;
+    private ITagDao itdao;
     private static AdminService instance;
 
     private AdminService() {
         iadao = ArticleDao.getInstance();
-        //itdao = TagDao.getInstance();
+        itdao = TagDao.getInstance();
     }
 
     /**
@@ -39,6 +41,7 @@ public class AdminService {
         }
         Article article = null;
         try {
+            //从前端界面获取文章
             article = Form2Bean.articleForm2Bean(request);
         } catch (FailException e) {
             e.printStackTrace();
@@ -46,16 +49,19 @@ public class AdminService {
         if(article == null) {
             return null;
         }
-        boolean f = iadao.addArticle(article);
-        if(f == false) {
+        //将文章添加到数据库中
+        Article a = iadao.addArticle(article);
+        if(a == null) {
             return null;
         }
         //增加标签
+        /*
         String str = request.getParameter("tags").trim();
         String[] tags = str.split(" ");
         for (String tag : tags){
-         //   itdao.addTag(a.getId(),tag);
+            itdao.addTag(article.getId(),tag);
         }
-        return article;
+        */
+        return a;
     }
 }

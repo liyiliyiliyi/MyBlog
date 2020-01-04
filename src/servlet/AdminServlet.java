@@ -22,10 +22,10 @@ public class AdminServlet extends HttpServlet {
         System.out.println("1");
         // 传所有的文章
         ArticleService as = ArticleService.getInstance();
-        request.setAttribute("articles", as.getAllArticle());
+//        request.setAttribute("articles", as.getAllArticle());
         System.out.println("2");
         // 传所有的分类
-        request.setAttribute("sort", as.getAllSort());
+//        request.setAttribute("sort", as.getAllSort());
         System.out.println("3");
         // 传所有的标签
         TagService ts = TagService.getInstance();

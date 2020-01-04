@@ -78,4 +78,13 @@ public class TagService {
         }
         return map;
     }
+
+    /**
+     * 根据文章id获得对应的标签
+     * @param id
+     * @return
+     */
+    public List getTagById(String id){
+        return dao.getTagByColumn("article_id", id);
+    }
 }

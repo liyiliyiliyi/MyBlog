@@ -19,7 +19,7 @@ public class TimeLineServlet extends HttpServlet {
 
         // 获取时间轴文章类型的数据
         ArticleService as = ArticleService.getInstance();
-        request.setAttribute("axis_list", as.getTimeLineList());
+//        request.setAttribute("axis_list", as.getTimeLineList());
 
         // 转发
         request.getRequestDispatcher("/pages/timeline.jsp").forward(request, response);

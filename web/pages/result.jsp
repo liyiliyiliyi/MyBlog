@@ -27,7 +27,7 @@
 					</h4>
 				</c:when>
 				<c:otherwise>
-					<h4>成功!是否现在查看文章<a href="/Blog/ArticleServlet?id=${article.id}">${article.title}</a></h4>
+					<h4>成功!是否现在查看文章<a href="../servlet/ArticleServlet?id=${article.id}">${article.title}</a></h4>
 				</c:otherwise>
 			</c:choose>	
 		

@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 
-import com.mysql.cj.x.protobuf.MysqlxCursor;
 import model.Article;
 
 import idao.IArticleDao;
@@ -78,11 +77,12 @@ public class ArticleDao implements IArticleDao {
             ps = conn.prepareStatement(sql);
             ps.setString(1, value);
             ResultSet rs = ps.executeQuery();
+            System.out.println(sql);
             // bean实例化
             list = new ArrayList();
             while (rs.next()) {
-                at = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("sort"),
-                        rs.getString("time"), rs.getInt("star"), rs.getInt("comment"), rs.getInt("visit"),
+                at = new Article(rs.getInt("article_id"), rs.getString("title"), rs.getString("author"), rs.getString("sort"),
+                        rs.getString("time"), rs.getInt("star"), rs.getString("comment"), rs.getInt("visit"),
                         rs.getString("content"));
                 list.add(at);
             }
@@ -99,11 +99,33 @@ public class ArticleDao implements IArticleDao {
     public void addVisit(int article_id) {
     }
 
-
     //获得上or下一篇文章
     @Override
     public Article getANearArticle(String time, int less_or_more) {
-        return null;
+        Article article = null;
+        String sql = null;
+        PreparedStatement ps;
+        if(less_or_more == this.LESS) {
+            sql = " SELECT  * FROM article WHERE TIME< '" + time + "'  ORDER BY TIME DESC ";
+        }else if(less_or_more == this.MORE) {
+            sql = " SELECT  * FROM article WHERE TIME > '" + time + "'  ORDER BY TIME ";
+        }
+        try {
+            ps = DBUtils.getStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                article = new Article(rs.getInt("id"),rs.getString("title"),
+                        rs.getString("author"), rs.getString("sort"),
+                        rs.getString("time"), rs.getInt("star"),
+                        rs.getString("comment"), rs.getInt("visit"),
+                        rs.getString("content"));
+            }
+            DBUtils.Close(ps, rs, null);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return article;
     }
 
 
@@ -112,7 +134,7 @@ public class ArticleDao implements IArticleDao {
         return null;
     }
     @Override
-    public boolean addArticle(Article a) {
+    public Article addArticle(Article a) {
         PreparedStatement pstatement;
         String sql = "insert into article values(null,?,?,?,?,?,?,?,?)";
         int count = 0;
@@ -123,7 +145,7 @@ public class ArticleDao implements IArticleDao {
             pstatement.setString(3, a.getSort());
             pstatement.setString(4, a.getTime());
             pstatement.setInt(5,a.getStar());
-            pstatement.setInt(6, a.getComment());
+            pstatement.setString(6, a.getComment());
             pstatement.setInt(7, a.getVisit());
             pstatement.setString(8, a.getContent());
             count = pstatement.executeUpdate();
@@ -131,11 +153,19 @@ public class ArticleDao implements IArticleDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if(count > 0){
-            return true;
+        return this.getLastArticle();
+        /*
+        statement = DBUtils.getStatement();
+        String sql = "insert into article(title,author,sort,time,start,comment,visit,content) "
+                + "values ('"+a.getTitle()+"','"+a.getAuthor()
+                +"','"+a.getSort()+"','"+a.getTime()+"','"+a.getStar()
+                +"','"+a.getComment()+"','"+a.getVisit()+"','"+a.getContent()+"')";
+        try {
+            int count = statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return false;
+        */
     }
 
     //将文章加到delte表
@@ -146,6 +176,21 @@ public class ArticleDao implements IArticleDao {
 
      //获取最新的文章
     private Article getLastArticle() {
+        String sql = "SELECT * FROM article ORDER BY TIME DESC LIMIT 1";
+        PreparedStatement  pstatement;
+        try {
+            pstatement = DBUtils.getStatement(sql);
+            ResultSet rs = pstatement.executeQuery();
+            if(rs.next()) {
+                Article article = new Article(rs.getInt("article_id"), rs.getString("title"), rs.getString("author"),
+                        rs.getString("sort"), rs.getString("time"), rs.getInt("star"), rs.getString("comment"),
+                        rs.getInt("visit"), rs.getString("content"));
+                DBUtils.Close(pstatement, rs, null);
+                return article;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -157,28 +202,8 @@ public class ArticleDao implements IArticleDao {
 
 
     @Override
-    public List<Article> getAllArticle() {
-        List<Article> list = new ArrayList();
-        Article article;
-        String sql = "select * from article";
-
-        try {
-            PreparedStatement ps = DBUtils.getStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                article = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("sort"),
-                        rs.getString("time"), rs.getInt("star"), rs.getInt("comment"), rs.getInt("visit"),
-                        rs.getString("content"));
-                list.add(article);
-            }
-            //排序
-            Collections.sort(list);
-            DBUtils.Close(ps, rs, null);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return list;
+    public List getAllArticle() {
+       return null;
     }
 
 
@@ -210,7 +235,6 @@ public class ArticleDao implements IArticleDao {
 
         return true;
     }
-
 
 }
 

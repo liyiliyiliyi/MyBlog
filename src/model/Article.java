@@ -16,7 +16,7 @@ public class Article implements Comparable {
     private String sort;
     private String time;
     private int star;
-    private int comment;
+    private String comment;
     private int visit;
     private String content;
 
@@ -24,7 +24,7 @@ public class Article implements Comparable {
 
     }
 
-    public Article(int id, String title, String author, String sort, String time, int star, int comment, int visit,
+    public Article(int id, String title, String author, String sort, String time, int star, String comment, int visit,
                    String content) {
         super();
         this.id = id;
@@ -107,11 +107,11 @@ public class Article implements Comparable {
         this.star = star;
     }
 
-    public int getComment() {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment(int comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 

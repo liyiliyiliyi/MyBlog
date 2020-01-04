@@ -90,7 +90,7 @@
 	<script src="./editormd/editormd.min.js"></script>
 </head>
 <body>
-<form action="">
+<form action="../servlet/NewArticleServlet" method="post">
 	<div id="head-div">
 		<div id="title-div">
 			<div>

@@ -13,7 +13,6 @@ import idao.IArticleDao;
 import dao.ArticleDao;
 import model.Article;
 
-import model.TimeLine;
 import util.ArticleUtils;
 import util.StringUtils;
 
@@ -72,66 +71,33 @@ public class ArticleService {
         return map;
     }
 
-    //通过column关键词获得了这一类的文章
+    /**
+     * 通过列属性获取对应的文章
+     * @param column //id
+     * @param value
+     * @return
+     */
     public List<Article> getArticle (String column, String value) {
+
         return dao.getArticleByColumn(column, value);
     }
 
-    //获取时间抽
-   public List  getTimeLineList() {
-       // 获取数据库中的所有文章
-       List<Article> articles = dao.getAllArticle();
-      
-       // 用来存 时间轴文章 (一种比Article类更简单适用的对象)
-       List<TimeLine> axis_list = new ArrayList();
-       // Article->AxisArticle
-       for (Article a : articles) {
-           TimeLine at = ArticleUtils.getTimeLine(a);
-           axis_list.add(at);
-       }
-       // 这里开始处理数据
-           // 时间降序
-           // year+文章的效果 把year封装成一个特殊的TimeLine对象 id=0 year = 大写的year
-           // 文章日期
-           // 然后全部存入 result中
-           // 在jsp判断id==0
-               // true: 特殊的TimeLine对象输出
-               // false: 输出文章对象的
-       TimeLine tmp = null;
-       List result = new LinkedList();
-       // 塞进去最新的一个年份
-       if (!axis_list.isEmpty()) {
-           tmp = new TimeLine();
-           tmp.setId(0);
-           tmp.setYear(axis_list.get(0).getYear());
-           result.add(tmp);
-           result.add(axis_list.get(0));
-       }
-       // 判断文章年份是不是不一样 不一样则塞一个year
-       for (int i = 1; i < axis_list.size(); i++) {
-           System.out.println(axis_list.get(i).getDay());
-           int present_year = axis_list.get(i).getYear();
-           int past_year = axis_list.get(i - 1).getYear();
-
-
-           if (present_year < past_year) {
-               tmp = new TimeLine();
-               tmp.setId(0);
-               tmp.setYear(present_year);
-               result.add(tmp);
-           }
-           result.add(axis_list.get(i));
-       }
-       
-       // 注意: 在list遍历里面动态修改了数组长度会出现内存溢出的情况
-       return result;
-   }
-
-    public List getAllSort() {
-        return dao.getAllSort();
+    /**
+     *  获取上一篇文章---参数LESS为1
+     * @param time
+     * @return
+     */
+    public Article getPreviousArticle(String time){
+        return dao.getANearArticle(time, dao.LESS);
     }
-    public List<Article> getAllArticle () {
-        return dao.getAllArticle();
+
+    /**
+     * 获取下一篇文章---参数MORE为1
+     * @param time
+     * @return
+     */
+    public Article getNextArticle(String time) {
+        return dao.getANearArticle(time, dao.MORE);
     }
 
 
