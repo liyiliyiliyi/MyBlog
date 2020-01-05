@@ -38,11 +38,25 @@ public class TagDao implements ITagDao {
     @Override
     public boolean addTag(int id, String tag) {
         return true;
+
     }
 
+    //通过id或者tag删除一个或多个标签
     @Override
     public boolean deleteTag(int id, String tag) {
-        return true;
+        String sql = "delete from tag where t_id=? or tag=?";
+        int result = 0;
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.setString(2, tag);
+            result = ps.executeUpdate();
+            DBUtils.Close(ps, null, null);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return result != 0;
     }
 
     // 获取所有不重复的标签
@@ -74,8 +88,19 @@ public class TagDao implements ITagDao {
 
     @Override
     public boolean updateTag(String old_tag, String new_tag) {
-
-       return true;
+        String sql = "update tag set tag=? where tag=?";
+        int result = 0;
+        try {
+            PreparedStatement ps = DBUtils.getStatement(sql);
+            ps.setString(1, new_tag);
+            ps.setString(2, old_tag);
+            result = ps.executeUpdate();
+            DBUtils.Close(ps, null, null);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return result != 0;
     }
 
 

@@ -135,7 +135,7 @@ public class ArticleDao implements IArticleDao {
     @Override
     public Map getColumAndCount(String search_column) {
 
-        String sql = " select " + search_column + " ,count(" + search_column + ") as counts  from t_article  group by "
+        String sql = " select " + search_column + " ,count(" + search_column + ") as counts  from article  group by "
                 + search_column;
         Map map = null;
         try {
@@ -281,14 +281,59 @@ public class ArticleDao implements IArticleDao {
 
     @Override
     public boolean updateSort(String old_sort, String new_sort) {
-        return true;
+
+        String sql = "UPDATE article SET sort=? WHERE sort=?";
+        int result = 0;
+        try {
+            PreparedStatement ps = DBUtils.getStatement(sql);
+            ps.setString(1, new_sort);
+            ps.setString(2, old_sort);
+            ps.executeUpdate();
+            DBUtils.Close(ps, null, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result > 0;
     }
 
 
+    //删除这类文章，并且把这类文章放入删除表保存
     @Override
     public boolean delelteSort(String sort) {
 
-        return true;
+        // 找到这个分类下的文章 移动到article_delet
+        String sql = "SELECT * FROM article where sort = ?";
+        int result = 0;
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, sort);
+            ResultSet rs = ps.executeQuery();
+
+            List<Article> list = new ArrayList();
+            while (rs.next()) {
+                Article article = new Article(rs.getInt("article_id"), rs.getString("title"), rs.getString("author"),
+                        rs.getString("sort"), rs.getString("time"), rs.getInt("star"), rs.getInt("comment"),
+                        rs.getInt("visit"), rs.getString("content"));
+                list.add(article);
+            }
+            System.out.println(list.size());
+            if (list.size() > 0) {
+                for (Article a : list) {
+                    this.addArticle_delet(a);
+                }
+            }
+
+            sql = "delete from article where sort =?";
+            PreparedStatement ps2 = DBUtils.getStatement(sql);
+            ps2.setString(1, sort);
+            result = ps2.executeUpdate();
+            System.out.println(result);
+            DBUtils.Close(ps, null, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result > 0;
     }
 
 }

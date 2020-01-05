@@ -14,7 +14,7 @@ import service.ArticleService;
 import service.TagService;
 import util.StringUtils;
 
-@WebServlet(name = "AdminDataServlet")
+@WebServlet("/servlet/AdminDataServlet")
 public class AdminDataServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -32,15 +32,16 @@ public class AdminDataServlet extends HttpServlet {
                 //通过id得到一篇文章
                 String a_id1 = request.getParameter("article_id");
                 request.setAttribute("edit_article", as.getArticle(a_id1));
-
                 //得到一类文章个数
                 ArticleService ase = ArticleService.getInstance();
                 Map sort_count = ase.getSortAndCount();
                 request.setAttribute("sort_count", sort_count);
+                System.out.println("count");
 
                 TagService tg = TagService.getInstance();
                 List all_tag = tg.getAllTag();
                 request.setAttribute("all_tag", all_tag);
+                System.out.println("tags");
                 request.getRequestDispatcher("/pages/edit.jsp").forward(request, response);
                 break;
 

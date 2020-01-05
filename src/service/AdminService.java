@@ -68,7 +68,8 @@ public class AdminService {
 
     //通过id得到一篇文章
     public Article getArticle(String article_id) {
-        List<Article> list = iadao.getArticleByColumn("id", article_id);
+        List<Article> list = iadao.getArticleByColumn("article_id", article_id);
+        System.out.println(list.size());
         if (list.size() != 0) {
             return list.get(0);
         }

@@ -44,7 +44,7 @@
 						 <div class="r_div">	
 						 <span>${a.time}</span>
 						 
-						 <a href="/Blog/AdminDataServlet?op=edit_article&&article_id=${a.id}">
+						 <a href="../servlet/AdminDataServlet?op=edit_article&&article_id=${a.id}">
 						 <button class="btn btn-default">&nbsp;<span class="glyphicon glyphicon-pencil" style="color:#5bc0de" >编辑</span>&nbsp;</button>
 						 </a>
 						 
