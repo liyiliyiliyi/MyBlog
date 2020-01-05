@@ -60,11 +60,23 @@ public class TagService {
         }
 
         // 有这个标签的文章
-        List<Article> article_list = null;
+        List<Article> article_list = new ArrayList<Article>();
+        //有这个标签的所有同类标签
+        List<Tag> articleID_list = null;
 
         for (Tag mark : tag_list) {
             //该标签的所有文章
-            article_list  = as.getArticle("sort", mark.getTag());
+                //先通过tag_list得到这类标签所有的article_id;
+                //在通过article得到所有这类标签的article
+            System.out.println(mark.getTag());
+            articleID_list = dao.getTagByColumn("tag",mark.getTag());
+            for (Tag tag1 : articleID_list ) {
+                System.out.println(tag1.getTag());
+            }
+            for (Tag tag : articleID_list) {
+                article_list.add( as.getArticle(tag.getArticle_id()));
+            }
+
             // 返回标签的内容+标签标记的所有文章集合
             map.put(mark.getTag(), article_list);
         }

@@ -116,4 +116,5 @@ public interface IArticleDao {
      */
     boolean delelteSort(String sort);
 
+    Article getArticle(int article_id);
 }

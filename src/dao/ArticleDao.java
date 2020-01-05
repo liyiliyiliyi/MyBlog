@@ -217,11 +217,13 @@ public class ArticleDao implements IArticleDao {
     //通过id删除一篇文章
     @Override
     public boolean deleteArticle(String id) {
-        String sql = "delete from article where " + id + "=article_id";
+        String sql = "delete from article where article_id = ?";
         PreparedStatement ps;
         int result = 0;
         try {
             ps = DBUtils.getStatement(sql);
+            ps.setString(1, id);
+            ResultSet set = ps.executeQuery();
             result = ps.executeUpdate();
             // 关闭连接
             DBUtils.Close(ps, null, null);
@@ -297,7 +299,7 @@ public class ArticleDao implements IArticleDao {
     }
 
 
-    //删除这类文章，并且把这类文章放入删除表保存
+    //删除这类文章，并且把这类文章放入删除表保存，执行两个SQL语句
     @Override
     public boolean delelteSort(String sort) {
 
@@ -305,7 +307,7 @@ public class ArticleDao implements IArticleDao {
         String sql = "SELECT * FROM article where sort = ?";
         int result = 0;
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = DBUtils.getStatement(sql);
             ps.setString(1, sort);
             ResultSet rs = ps.executeQuery();
 
@@ -316,7 +318,7 @@ public class ArticleDao implements IArticleDao {
                         rs.getInt("visit"), rs.getString("content"));
                 list.add(article);
             }
-            System.out.println(list.size());
+
             if (list.size() > 0) {
                 for (Article a : list) {
                     this.addArticle_delet(a);
@@ -326,14 +328,41 @@ public class ArticleDao implements IArticleDao {
             sql = "delete from article where sort =?";
             PreparedStatement ps2 = DBUtils.getStatement(sql);
             ps2.setString(1, sort);
-            result = ps2.executeUpdate();
-            System.out.println(result);
+            ps2.executeQuery();
+
             DBUtils.Close(ps, null, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return result > 0;
+    }
+
+    //通过id得到一个Article
+    @Override
+    public Article getArticle(int article_id) {
+        String sql = "select * from article where article_id = ?";
+        PreparedStatement ps;
+        Article article = null;
+
+        try {
+            ps = DBUtils.getStatement(sql);
+            ps.setInt(1, article_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                article = new Article(rs.getInt("article_id"), rs.getString("title"), rs.getString("author"),
+                        rs.getString("sort"), rs.getString("time"), rs.getInt("star"), rs.getInt("comment"),
+                        rs.getInt("visit"), rs.getString("content"));
+            }
+            // 关闭连接
+            DBUtils.Close(ps, null, null);
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return article;
+
     }
 
 }

@@ -62,7 +62,7 @@ public class TagDao implements ITagDao {
 
     }
 
-    //通过id或者tag删除一个或多个标签
+    //根据id或者tag删除一个或多个标签
     @Override
     public boolean deleteTag(int id, String tag) {
         String sql = "delete from tag where t_id=? or tag=?";
@@ -127,8 +127,8 @@ public class TagDao implements ITagDao {
 
     @Override
     public List getTagByColumn(String column, String value) {
-        //column == tag,先这样，还没找到更好的sql语句
-        String sql = "select * from tag where " + value + "=tag";
+        //column == tag,先这样，还没找到更好的sql语句，用的时候注意sql语句
+        String sql = "select * from tag where tag = '" + value + "'";
         List list = null;
         try {
             PreparedStatement ps = DBUtils.getStatement(sql);
@@ -137,8 +137,10 @@ public class TagDao implements ITagDao {
             Tag tag;
             while (rs.next()) {
                 tag = new Tag();
-                tag.setId(rs.getInt("id"));
+                tag.setId(rs.getInt("t_id"));
+                tag.setArticle_id(rs.getInt("article_id"));
                 tag.setTag(rs.getString("tag"));
+                System.out.println(rs.getInt("article_id"));
                 list.add(tag);
             }
             DBUtils.Close(ps, rs, null);

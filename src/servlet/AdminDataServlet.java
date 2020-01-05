@@ -29,6 +29,7 @@ public class AdminDataServlet extends HttpServlet {
 
             case "edit_article":
 
+                System.out.println("ceshi1");
                 //通过id得到一篇文章
                 String a_id1 = request.getParameter("article_id");
                 request.setAttribute("edit_article", as.getArticle(a_id1));
@@ -46,6 +47,7 @@ public class AdminDataServlet extends HttpServlet {
                 break;
 
             case "delete_article":
+                System.out.println("ceshi2");
                 String a_id2 = request.getParameter("article_id");
                 as.delteArticle(a_id2);
 

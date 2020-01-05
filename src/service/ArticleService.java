@@ -170,4 +170,10 @@ public class ArticleService {
         // 注意: 在list遍历里面动态修改了数组长度会出现内存溢出的情况
         return result;
     }
+
+    public Article getArticle(int article_id) {
+
+       return dao.getArticle(article_id);
+
+    }
 }

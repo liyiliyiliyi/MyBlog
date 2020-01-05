@@ -28,7 +28,7 @@ public class Tag {
     }
 
     public void setArticle_id(int id) {
-        this.id = article_id;
+        this.article_id = id;
     }
 
     public String getTag() {

@@ -79,6 +79,9 @@ public class AdminService {
     //通过id删除一篇文章
     public void delteArticle(String a_id2) {
         iadao.deleteArticle(a_id2);
+        if (iadao.deleteArticle(a_id2)) {
+            System.out.println("可以删除");
+        }
     }
 
     //更新文章种类
@@ -104,7 +107,9 @@ public class AdminService {
 
     public Article updateArticle(HttpServletRequest request) {
         String old_id = request.getParameter("id ");
+        
         this.delteArticle(old_id);
+
         return this.addArticle(request);
     }
 
