@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(name = "AddServlet")
+@WebServlet("/servlet/AddServlet")
 public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
