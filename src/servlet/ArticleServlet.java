@@ -37,8 +37,11 @@ public class ArticleServlet extends HttpServlet {
         request.setAttribute("article_next", as.getNextArticle(a.getTime()));
 
         // 加载文章评论
-    //    CommentService cs = CommentService.getInstance();
-    //    request.setAttribute("comment", cs.loadComment(a.getId()));
+       // CommentService cs = CommentService.getInstance();
+       // request.setAttribute("comment", cs.loadComment(a.getId()));
+
+
+
 
         //服务器跳转
         request.getRequestDispatcher("../pages/article.jsp").forward(request, response);

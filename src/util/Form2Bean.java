@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import model.Comment;
+import model.Tag;
 import org.apache.commons.beanutils.BeanUtils;
 
 import model.Article;
@@ -55,7 +56,8 @@ public class Form2Bean {
 		//处理时间---提交文章，生成的时间传入数据库
 		Date now_date = new Date();
 		String time = DateUtils.getFormatDate(now_date);
-		//System.out.println(time);
+
+		//测试--打印文章
 		System.out.println(request.getParameter("editormd-markdown-doc"));
 
 		value.put("title", request.getParameter("title"));
@@ -63,7 +65,6 @@ public class Form2Bean {
 		//测试作者---登录注册完成要更改
 		value.put("author", "ganyurou");
 		value.put("sort", request.getParameter("sort"));
-		//String tags = request.getParameter("tags");
 		value.put("content", request.getParameter("editormd-markdown-doc"));
 		value.put("star", 0);
 		value.put("comment", 0);
@@ -83,6 +84,8 @@ public class Form2Bean {
 		throw new FailException("Create Fail!");
 
 	}
+
+
 
 	private static boolean vilidate(Article a) {
 		boolean result = true;

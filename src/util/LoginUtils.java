@@ -18,6 +18,8 @@ public class LoginUtils {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
+		System.out.println(username);
+		System.out.println(password);
 
 		//如果为空，则...
 		if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password))
@@ -28,9 +30,13 @@ public class LoginUtils {
 		if (user == null)
 			return;
 
+	//	System.out.println(user+"00000");
 		// 写入session
 		HttpSession session = request.getSession();
+
 		session.setAttribute("user", user);
+
+
 
 	}
 

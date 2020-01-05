@@ -49,7 +49,7 @@ public class UserDao implements IUserDao{
 
     @Override
     public User login(String username, String password) {
-        User user = null;
+        User user = new User();
         PreparedStatement pstatement;
         String sql = "select * from user where user_name=? and user_password=?";
 
@@ -60,17 +60,14 @@ public class UserDao implements IUserDao{
             ResultSet rs = pstatement.executeQuery();
 
             if(rs.next()) {
-                Map<String, String> map = new HashMap<>();
-                user = new User();
-                map.put("username",rs.getString("user_name"));
-                map.put("password",rs.getString("user_password"));
-                map.put("user_id",rs.getString("user_id"));
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("user_name", rs.getString("user_name"));
+                map.put("user_password", rs.getString("user_password"));
+                map.put("user_id", rs.getString("user_id"));
                 try {
-                    BeanUtils.populate(user,map);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
+                    BeanUtils.populate(user, map);
+                } catch (Exception e) {
+                    throw new RuntimeException();
                 }
             }
             DBUtils.Close(pstatement, null,null);
