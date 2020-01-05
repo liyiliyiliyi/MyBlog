@@ -55,14 +55,14 @@ public class AdminService {
         if(a == null) {
             return null;
         }
+
         //增加标签
-        /*
         String str = request.getParameter("tags").trim();
         String[] tags = str.split(" ");
         for (String tag : tags){
-            itdao.addTag(article.getId(),tag);
+            itdao.addTag(a.getId(),tag);
         }
-        */
+
         return a;
     }
 

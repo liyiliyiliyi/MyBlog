@@ -45,11 +45,11 @@ CREATE TABLE `comment` (
 ) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `tag` (
-                     `t_id` INT(11) DEFAULT NULL,
+                     `t_id` INT(11) NOT NULL AUTO_INCREMENT,
                      `article_id` INT(11),
-                     `tag` VARCHAR(30) DEFAULT NULL
+                     `tag` VARCHAR(30) DEFAULT NULL,
+                     PRIMARY KEY (`t_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
-
 
 CREATE TABLE `user` (
                       `user_id` INT(11) NOT NULL AUTO_INCREMENT,

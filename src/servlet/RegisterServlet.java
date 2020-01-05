@@ -13,6 +13,7 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+       request.setCharacterEncoding("UTF-8");
         RegisterUtils.register(request);
 
         //注册成功后--服务端跳转到登录界面login.jsp

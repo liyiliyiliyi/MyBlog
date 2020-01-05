@@ -14,9 +14,13 @@ import java.io.IOException;
 public class NewArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+
         AdminService as = AdminService.getInstance();
         Article result = as.addArticle(request);
         request.setAttribute("article", result);
+
+
 
         request.getRequestDispatcher("../pages/result.jsp").forward(request, response);
     }

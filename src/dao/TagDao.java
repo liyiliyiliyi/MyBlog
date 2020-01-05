@@ -5,10 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import dao.ArticleDao;
+import idao.IArticleDao;
 import idao.ITagDao;
+import model.Article;
 import model.Tag;
 import util.DBUtils;
 
@@ -37,6 +40,24 @@ public class TagDao implements ITagDao {
 
     @Override
     public boolean addTag(int id, String tag) {
+
+        String sql = "insert into tag values(null,?,?)";
+        int result = 0;
+        PreparedStatement pstatement;
+
+        try {
+            pstatement = DBUtils.getStatement(sql);
+            pstatement.setInt(1,id);
+            pstatement.setString(2,tag);
+            result = pstatement.executeUpdate();
+            DBUtils.Close(pstatement,null,null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if(result <= 0) {
+            return false;
+        }
         return true;
 
     }

@@ -2,6 +2,7 @@ package model;
 
 public class Tag {
 
+    private int article_id;
     private int id;
     private String tag;
 
@@ -20,6 +21,14 @@ public class Tag {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getArticle_id() {
+        return article_id;
+    }
+
+    public void setArticle_id(int id) {
+        this.id = article_id;
     }
 
     public String getTag() {

@@ -15,13 +15,10 @@ public class RegisterUtils {
 
 //        user.setUser_name(username);
 //        user.setUser_password(password);
-//
-//        System.out.println(user);
 
         IUserDao dao = UserDao.getInstance();
         boolean f = dao.register(username,password);
         if (f == false)
             return;
-
     }
 }
