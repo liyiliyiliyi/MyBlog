@@ -8,7 +8,7 @@
 
 <!-- preview的css -->
 <link rel="stylesheet" href="editormd/css/style.css" />
- <link rel="stylesheet" href="./editormd/css/editormd.preview.css" />
+<link rel="stylesheet" href="/MyBlog/pages/editormd/css/editormd.preview.min.css" />
 
 <!-- 引入editormd相关 -->
 <script src="/MyBlog/pages/editormd/jquery-3.4.1.min.js"></script>
