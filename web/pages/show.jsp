@@ -4,8 +4,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Md2Html</title>
-<!-- 这个文件用来转换 Markdown 到Html 显示 -->
-<!-- 参数: ${article.content} -->
 </head>
 
 <!-- preview的css -->
@@ -13,18 +11,18 @@
  <link rel="stylesheet" href="./editormd/css/editormd.preview.css" />
 
 <!-- 引入editormd相关 -->
-<script src="./editormd/js/zepto.min.js"></script>
-<script src="./editormd/js/editormd.js"></script>
+<script src="/MyBlog/pages/editormd/jquery-3.4.1.min.js"></script>
 
-<script src="./editormd/js/jquery.min.js"></script>
-<script src="./editormd/lib/marked.min.js"></script>
-<script src="./editormd/lib/prettify.min.js"></script>
-<script src="./editormd/lib/raphael.min.js"></script>
-<script src="./editormd/lib/underscore.min.js"></script>
-<script src="./editormd/lib/sequence-diagram.min.js"></script>
-<script src="./editormd/lib/flowchart.min.js"></script>
-<script src="./editormd/lib/jquery.flowchart.min.js"></script>
-<script src="./editormd/editormd.js"></script>
+<link rel="stylesheet" href="/MyBlog/pages/editormd/css/editormd.min.css" />
+<script src="/MyBlog/pages/editormd/lib/marked.min.js"></script>
+<script src="/MyBlog/pages/editormd/lib/prettify.min.js"></script>
+<script src="/MyBlog/pages/editormd/lib/raphael.min.js"></script>
+<script src="/MyBlog/pages/editormd/lib/underscore.min.js"></script>
+<script src="/MyBlog/pages/editormd/lib/sequence-diagram.min.js"></script>
+<script src="/MyBlog/pages/editormd/lib/flowchart.min.js"></script>
+<script src="/MyBlog/pages/editormd/lib/jquery.flowchart.min.js"></script>
+
+<script src="/MyBlog/pages/editormd/editormd.min.js"></script>
 
 <body style="background:#eee;">
  <div id="mdView"  style="background:#eee;">  	
@@ -34,7 +32,7 @@
 <script type="text/javascript">
 	$(function mdToHtml() {		
 		//获取要显示的内容
-		//var content = $("#article_content").text();			
+		var content = $("#article_content").text();
 		editormd.markdownToHTML("mdView", {
 			htmlDecode : "style,script,iframe", 
 			emoji : true,

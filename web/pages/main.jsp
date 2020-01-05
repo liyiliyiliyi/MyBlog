@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%>
  <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 		
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,14 +18,14 @@ pageEncoding="UTF-8"%>
 	<div class="head_line"></div>
 
 	<div class="container" id="main">
-	
+
 		<div id="header"></div>
 
 		<div class="row c_center">
 			<div class="col-md-3" id="left_content">
 
 				<div id="title">
-					<h2><a href="/Blog/login.html">MyBlog</a></h2>
+					<h2><a href="/MyBlog/login.html">MyBlog</a></h2>
 					<h5 class="text-muted">Winner Winner Chicken Dinner!</h5>
 				</div>
 
@@ -47,9 +47,9 @@ pageEncoding="UTF-8"%>
 					<div class="inline " >
 						<a href="../servlet/TagsServlet?get=all"><span>${tags_number}</span><br/>标签</a>
 					</div>
-					
+
 				</div>
-			
+
 
 				<div id="list">
 					<table class="table table-hover c_center">
@@ -57,14 +57,14 @@ pageEncoding="UTF-8"%>
 							<td><a href="/Blog/index.jsp	"><span class="glyphicon glyphicon-home"></span>
 								&nbsp;&nbsp;首页</a></td>
 						</tr>
-						<tr>	
+						<tr>
 							<td><a href="../servlet/SortServlet?get=all"><span class="glyphicon glyphicon-list"></span>
 								&nbsp;&nbsp;分类</a></td>
 						</tr>
 						<tr>
 							<td><a href="../servlet/TagServlet?get=all"><span class="glyphicon glyphicon-tags"></span>
 								&nbsp;&nbsp;标签</a></td>
-						</tr>						
+						</tr>
 						<tr>
 							<td><a href="../servlet/TimeLineServlet"><span class="glyphicon glyphicon-book"></span>
 								&nbsp;&nbsp;时间轴</a></td>
@@ -77,55 +77,55 @@ pageEncoding="UTF-8"%>
 				</div>
 				<!-- list -->
 					<br/>
-					
+
 				<div class="sort">
 					<div class="list-group">
-						<span class="list-group-item active">分类</span>						
+						<span class="list-group-item active">分类</span>
 						<!-- 这里初始化分类 -->
 						<c:forEach var="entity"  items="${sort_count_map}">
-						 <a href="/Blog/SortServlet?get=${entity.key}" class="list-group-item">${entity.key}&nbsp;&nbsp;&nbsp;&nbsp; (${entity.value})</a>						
-						</c:forEach>									
-						<!-- 初始化结束 -->						
+						 <a href="/Blog/SortServlet?get=${entity.key}" class="list-group-item">${entity.key}&nbsp;&nbsp;&nbsp;&nbsp; (${entity.value})</a>
+						</c:forEach>
+						<!-- 初始化结束 -->
 					</div>
 				</div><!-- sort -->
 
-				
+
 				<div class="visit">
 					<div class="list-group">
-						<span class="list-group-item active">阅读排行</span>						
+						<span class="list-group-item active">阅读排行</span>
 						<!-- 这里初始化阅读排行 -->
 						<c:forEach var="a"  items="${visit_rank}">
-						 <a href="/Blog/ArticleServlet?id=${a.id}" class="list-group-item">${a.title}&nbsp;&nbsp; <span class="c_right">(${a.visit})</span></a>						
-						</c:forEach>									
-						<!-- 初始化结束 -->						
+						 <a href="/Blog/ArticleServlet?id=${a.id}" class="list-group-item">${a.title}&nbsp;&nbsp; <span class="c_right">(${a.visit})</span></a>
+						</c:forEach>
+						<!-- 初始化结束 -->
 					</div>
 				</div><!-- visit-->
-	
+
 
 				<div id="tag">
 					<div class="list-group">
-						<span class="list-group-item active">标签</span>					
+						<span class="list-group-item active">标签</span>
 						<br/>
-						
-						<!-- 这里初始化标签 -->				
-						<c:forEach var="t"  varStatus="status" items="${tag_list}" >		
+
+						<!-- 这里初始化标签 -->
+						<c:forEach var="t"  varStatus="status" items="${tag_list}" >
 						<c:choose>
 						<c:when test="${status.count%2==1}">
 							<span class="label label-info"><a href="/Blog/TagsServlet?get=${t.tag}">
-							&nbsp;${t.tag}&nbsp;</a></span>							
+							&nbsp;${t.tag}&nbsp;</a></span>
 						</c:when>
 						<c:otherwise>
 								<span class="label label-success"><a href="/Blog/TagsServlet?get=${t.tag}">
-								&nbsp;${t.tag}&nbsp;</a></span>						
+								&nbsp;${t.tag}&nbsp;</a></span>
 						</c:otherwise>
 						</c:choose>
-					
-						</c:forEach>						
-						<!-- 初始化标签完成 -->							
+
+						</c:forEach>
+						<!-- 初始化标签完成 -->
 					</div>
 				</div><!-- tag -->
-				
-				
+
+
 			<%--<!-- admin here <c:if test="${sessionScope.user!=null}">-->--%>
 
 			<a href="/Blog/AddServlet">
@@ -137,36 +137,36 @@ pageEncoding="UTF-8"%>
 			</a>
 
 			<%--<!-- </c:if> -->--%>
-			
+
 			</div>
-			<div class="col-md-2" id="center_content">		
+			<div class="col-md-2" id="center_content">
 			</div>
-					
-			
+
+
 			<div  class="col-md-7 " id="right_Content">
 				<br />
 				<br />
-				<div class="list-group">							
+				<div class="list-group">
 					<a href="#" class="list-group-item active">文章</a>
 					<!-- 这里初始化文章列表 -->
-					<c:forEach var="article"   items="${article_list}" >	
-					<div  class="list-group-item">									
+					<c:forEach var="article"   items="${article_list}" >
+					<div  class="list-group-item">
 					<h4><a href="/Blog/ArticleServlet?id=${article.id}">${article.title}</a></h4>
 					<br/>
 					<span>${article.time}&nbsp;&nbsp;|</span>
 					<a href="/Blog/SortServlet?get=${article.sort}">${article.sort}</a>&nbsp;&nbsp;|
 					<span>阅读次数: ${article.visit}</span>
-					<br/><br/>					
+					<br/><br/>
 					<span>${article.content}</span>
-					<br/><br/><br/>	
+					<br/><br/><br/>
 					<a href="/Blog/ArticleServlet?id=${article.id}">阅读全文</a>
-					<br/>			
+					<br/>
 					</div>
 					</c:forEach>
-					<!-- 初始化文章列表完成 -->			
+					<!-- 初始化文章列表完成 -->
 				</div>
-			</div>	
-		</div>				
+			</div>
+		</div>
 		<div class="foot_line"></div>
 			</div><!-- container -->
 	<div id="footer">
@@ -176,14 +176,14 @@ pageEncoding="UTF-8"%>
 			<a href="#">&nbsp;&nbsp;MyBlog</a>
 			<br/>
 			copyright © 2017
-		</div>		
-		
+		</div>
+
 		<div class="r_div">
 		<a href="#"><input  class="btn btn-default"   value="返回顶部"  style="width:50%;"/></a>
 		<h6> 被访问了 ${visited } 次</h6>
-		<h6> 你是第 ${member}个访问者</h6>    
+		<h6> 你是第 ${member}个访问者</h6>
 		</div>
-		
+
 	</div><!-- footer -->
 </body>
 </html>

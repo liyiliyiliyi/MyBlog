@@ -49,7 +49,7 @@
 				<div id="msg-div" class="row">
 					<input type="hidden" name="time" value="">
 					<div class="col-md-3 input-group message-group">
-						<span class="input-group-addon">作者：</span><input class="message-input form-control" placeholder="作者" type="text" id="author" disabled value="作者"></input>
+						<span class="input-group-addon">作者</span><input class="message-input form-control" placeholder="作者" type="text" id="author" disabled value="作者"></input>
 					</div>
 					<div class="col-md-3 input-group message-group">
 						<span class="input-group-addon">分类</span><input class="message-input form-control" placeholder="请输入分类" type="text" name="sort">
