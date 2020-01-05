@@ -16,49 +16,49 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 	<!--引入jQuery-->
-	<script src="./editormd/jquery-3.4.1.min.js"></script>
+	<script src="/MyBlog/js/jquery-3.4.1.min.js"></script>
 
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="../css/add.css" />
+	<link rel="stylesheet" href="/MyBlog/css/add.css" />
 
-	<link rel="stylesheet" href="./editormd/css/editormd.min.css" />
+	<link rel="stylesheet" href="/MyBlog/pages/editormd/css/editormd.min.css" />
 
-	<script src="./editormd/lib/marked.min.js"></script>
-	<script src="./editormd/lib/prettify.min.js"></script>
+	<script src="/MyBlog/pages/editormd/lib/marked.min.js"></script>
+	<script src="/MyBlog/pages/editormd/lib/prettify.min.js"></script>
 
-	<script src="./editormd/lib/raphael.min.js"></script>
-	<script src="./editormd/lib/underscore.min.js"></script>
-	<script src="./editormd/lib/sequence-diagram.min.js"></script>
-	<script src="./editormd/lib/flowchart.min.js"></script>
-	<script src="./editormd/lib/jquery.flowchart.min.js"></script>
+	<script src="/MyBlog/pages/editormd/lib/raphael.min.js"></script>
+	<script src="/MyBlog/pages/editormd/lib/underscore.min.js"></script>
+	<script src="/MyBlog/pages/editormd/lib/sequence-diagram.min.js"></script>
+	<script src="/MyBlog/pages/editormd/lib/flowchart.min.js"></script>
+	<script src="/MyBlog/pages/editormd/lib/jquery.flowchart.min.js"></script>
 
-	<script src="./editormd/editormd.min.js"></script>
+	<script src="/MyBlog/pages/editormd/editormd.min.js"></script>
 </head>
 <body id="body">
 <div class="container-fluid">
-	<form action="../servlet/UpdateArticleServlet" method="post">
+	<form action="../servlet/UpdateArticleServlet">
 		<div id="head-div" class="row">
 			<div id="title-div" class="col-md-9">
 				<div class="input-group input-group-lg">
 					<input type="hidden" name="article_id">
 					<span class="title input-group-addon">标题</span>
-					<input class="form-control" placeholder="${edit_article.title}" id="title-input" type="text" name="title" value="输入文章标题" onfocus="if (value=='输入文章标题') {value=''}" onblur="if (value=='') {value='输入文章标题'}">
+					<input class="form-control" placeholder="${edit_article.title}" id="title-input" type="text" name="title" value="${edit_article.title}" onfocus="if (value=='输入文章标题') {value=''}" onblur="if (value=='') {value='输入文章标题'}">
 				</div>
 				<div id="msg-div" class="row">
 					<input type="hidden" name="time" value="">
 					<div class="col-md-2 input-group message-group">
-						<span class="input-group-addon">作者</span><input class="message-input form-control" placeholder="${edit_article.author}" type="text" id="author" disabled value="作者"></input>
+						<span class="input-group-addon">作者</span><input class="message-input form-control" placeholder="${edit_article.author}" type="text" id="author" disabled value="${edit_article.author}"></input>
 					</div>
-                    <div class="col-md-2 input-group message-group">
-                        <span class="input-group-addon">时间</span><input class="message-input form-control" placeholder="${edit_article.time}" type="text" id="time" name="time" disabled value="时间"></input>
+                    <div class="col-md-3 input-group message-group">
+                        <span class="input-group-addon">时间</span><input class="message-input form-control" placeholder="${edit_article.time}" type="text" id="time" name="time" disabled value="${edit_article.time}"></input>
                     </div>
-					<div class="col-md-3 input-group message-group">
-						<span class="input-group-addon">分类</span><input class="message-input form-control" placeholder="${edit_article.sort}" type="text" name="sort">
+					<div class="col-md-2 input-group message-group">
+						<span class="input-group-addon">分类</span><input class="message-input form-control" placeholder="${edit_article.sort}" type="text" name="sort" value="${edit_article.sort}">
 					</div>
 					<div class="col-md-3 input-group message-group">
-						<span class="input-group-addon">标签</span><input class="message-input form-control" placeholder="${all_tag}" type="text" name="tags">
+						<span class="input-group-addon">标签</span><input class="message-input form-control" placeholder="${all_tag}" type="text" name="tags" value="${all_tag}">
 					</div>
 				</div>
 			</div>
@@ -66,7 +66,8 @@
 		</div>
 		<div id="editorView">
 			<div id="editormd">
-				<textarea style="display:none;"></textarea>
+				<textarea style="display:none;">
+${edit_article.content}</textarea>
 			</div>
 
 			<div id="help">
@@ -107,14 +108,12 @@
 </body>
 <script type="text/javascript">
     var testEditor;
-    var blog_text = `${edit_article.content}`;
     $(function() {
         testEditor = editormd("editormd", {
             width  : "75%",
             // height : height - head,
-            path   : './editormd/lib/',
+            path   : '../pages/editormd/lib/',
             codeFold : true,
-            markdown : blog_text,
             searchReplace : true,
             saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
             htmlDecode : "style,script,iframe|on*", // 开启 HTML 标签解析，为了安全性，默认不开启

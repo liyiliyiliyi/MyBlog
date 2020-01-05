@@ -217,12 +217,11 @@ public class ArticleDao implements IArticleDao {
     //通过id删除一篇文章
     @Override
     public boolean deleteArticle(String id) {
-        String sql = "delete from t_article where id=?";
+        String sql = "delete from article where " + id + "=article_id";
         PreparedStatement ps;
         int result = 0;
         try {
             ps = DBUtils.getStatement(sql);
-            ps.setString(1, id);
             result = ps.executeUpdate();
             // 关闭连接
             DBUtils.Close(ps, null, null);
@@ -231,6 +230,7 @@ public class ArticleDao implements IArticleDao {
             e.printStackTrace();
         }
         return result != 0;
+
     }
 
 

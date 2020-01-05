@@ -16,7 +16,7 @@
 <link type="text/css" rel="stylesheet" href="../css/public.css" />
 <link type="text/css" rel="stylesheet" href="../css/admin.css" />
 
-<script src="./js/admin.js"></script>
+<script src="../js/admin.js"></script>
 
 </head>
 <body>
@@ -47,10 +47,12 @@
 						 <a href="../servlet/AdminDataServlet?op=edit_article&&article_id=${a.id}">
 						 <button class="btn btn-default">&nbsp;<span class="glyphicon glyphicon-pencil" style="color:#5bc0de" >编辑</span>&nbsp;</button>
 						 </a>
-						 
+
 						 <button class="btn btn-default">&nbsp;
 						 <span class="glyphicon glyphicon-trash" style="color:#d9534f" onclick="delete_article(this,'${a.id}')"> 删除</span>&nbsp;</button>
-						 </div>										 
+
+						 </div>
+
 				</div>							
 				</c:forEach>					
 				</div>

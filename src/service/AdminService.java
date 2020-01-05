@@ -100,4 +100,12 @@ public class AdminService {
     public void deleteTag(String tag) {
         itdao.deleteTag(0,tag);
     }
+
+
+    public Article updateArticle(HttpServletRequest request) {
+        String old_id = request.getParameter("id ");
+        this.delteArticle(old_id);
+        return this.addArticle(request);
+    }
+
 }

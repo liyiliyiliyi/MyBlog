@@ -48,6 +48,7 @@ public class AdminDataServlet extends HttpServlet {
             case "delete_article":
                 String a_id2 = request.getParameter("article_id");
                 as.delteArticle(a_id2);
+
                 break;
 
             case "sort_update":
