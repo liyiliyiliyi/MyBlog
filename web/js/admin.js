@@ -19,11 +19,11 @@ function sendURL(url){
 	// 获取ajax
 	var xmlhttp = getXHR();		
 	xmlhttp.onreadystatechange = function() {
-//		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-//			//这里可以写 服务器返回解结果后的处理
-//		}
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			//这里可以测试
+		}
 	}
-	xmlhttp.open("POST", url, true);
+	xmlhttp.open("Get", url, true);
 	xmlhttp.send();		
 }
 /**
@@ -56,7 +56,7 @@ function delete_article(hod , article_id){
 	var recorder_parent = recorder.parentNode;
 	recorder_parent.removeChild(recorder);
 	//send
-	var url = "../servlet/AdminDataServlet?op=delete_article"+"&&article_id="+article_id;
+	var url = "/servlet/AdminDataServlet?op=delete_article"+"&&article_id="+article_id;
 	sendURL(url);
 }
 
