@@ -2,6 +2,7 @@ package service;
 
 import dao.CommentDao;
 import idao.ICommentDao;
+import model.Comment;
 
 import java.util.List;
 
@@ -30,5 +31,9 @@ public class CommentService {
     public List loadComment(int article_id){
 
         return idao.getComment(article_id);
+    }
+
+    public boolean addComment(Comment comment) {
+        return idao.addComment(comment);
     }
 }

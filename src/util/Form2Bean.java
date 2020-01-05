@@ -17,12 +17,14 @@ public class Form2Bean {
 
 	public static Comment commentForm2Bean(HttpServletRequest request) throws FailException {
 
+		//从article.jsp中取得文章id
 		int id = Integer.valueOf(request.getParameter("id"));
 
 		String nickname = request.getParameter("w_nickname");
 		String content = request.getParameter("w_content");
 
 		Comment bean = new Comment();
+		//向comment对象中放入字段
 		bean.setArticle_id(id);
 		bean.setNickname(nickname);
 		bean.setContent(content);
@@ -53,7 +55,7 @@ public class Form2Bean {
 		//处理时间---提交文章，生成的时间传入数据库
 		Date now_date = new Date();
 		String time = DateUtils.getFormatDate(now_date);
-		System.out.println(time);
+		//System.out.println(time);
 		System.out.println(request.getParameter("editormd-markdown-doc"));
 
 		value.put("title", request.getParameter("title"));

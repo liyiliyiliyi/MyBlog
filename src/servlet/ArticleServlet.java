@@ -16,9 +16,10 @@ import java.io.IOException;
 public class ArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
         // 想要获取的文章 id
         String id = request.getParameter("id");
-        System.out.println(id);
+        //System.out.println(id);
         ArticleService as = ArticleService.getInstance();
 
         //文章-----get(0)没弄清楚
@@ -36,8 +37,8 @@ public class ArticleServlet extends HttpServlet {
         request.setAttribute("article_next", as.getNextArticle(a.getTime()));
 
         // 加载文章评论
-        CommentService cs = CommentService.getInstance();
-        request.setAttribute("comment", cs.loadComment(a.getId()));
+    //    CommentService cs = CommentService.getInstance();
+    //    request.setAttribute("comment", cs.loadComment(a.getId()));
 
         //服务器跳转
         request.getRequestDispatcher("../pages/article.jsp").forward(request, response);

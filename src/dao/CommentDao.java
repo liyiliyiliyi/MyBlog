@@ -45,7 +45,14 @@ public class CommentDao implements ICommentDao {
             pstatement.setInt(5, comment.getStar());
             pstatement.setInt(6, comment.getDiss());
             count = pstatement.executeUpdate();
+
+            //写入文章之后需要向article表中的comment中数据加一处理
+            sql = "UPDATE article SET COMMENT = COMMENT+1  WHERE article_id=" + comment.getArticle_id();
+            PreparedStatement ps2 = DBUtils.getStatement(sql);
+            ps2.executeUpdate();
+
             DBUtils.Close(pstatement, null, null);
+            DBUtils.Close(ps2, null, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
