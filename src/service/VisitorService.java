@@ -11,6 +11,8 @@ import util.DateUtils;
 
 public class VisitorService {
 
+
+
     /**
      * 全部浏览者
      *
@@ -25,7 +27,7 @@ public class VisitorService {
             PreparedStatement ps = DBUtils.getStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                result += 1;
+                 result = rs.getInt(1);
             }
             DBUtils.Close(ps, rs, null);
         } catch (SQLException e) {
@@ -40,19 +42,7 @@ public class VisitorService {
      * @return
      */
     public static int totalMember() {
-        int result = 0;
-        String sql = "SELECT COUNT(DISTINCT(ip)) FROM visitor";
-        try {
-            PreparedStatement ps = DBUtils.getStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                result = rs.getInt(1);
-            }
-            DBUtils.Close(ps, rs, null);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
+       return VisitorService.totalVisit();
     }
 
 }

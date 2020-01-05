@@ -74,4 +74,29 @@ public class AdminService {
         }
         return null;
     }
+
+    //通过id删除一篇文章
+    public void delteArticle(String a_id2) {
+        iadao.deleteArticle(a_id2);
+    }
+
+    //更新文章种类
+    public void updateSort(String old_sort, String new_sort) {
+        iadao.updateSort(old_sort, new_sort);
+    }
+
+    //删除这类所有文章
+    public void deleteSort(String sort) {
+        itdao.deleteTag(0, sort);
+    }
+
+    //更新标签
+    public void updateTag(String old_tag, String new_tag) {
+        itdao.updateTag(old_tag, new_tag);
+    }
+
+    //删除标签
+    public void deleteTag(String tag) {
+        itdao.deleteTag(0,tag);
+    }
 }

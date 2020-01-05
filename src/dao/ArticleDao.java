@@ -66,7 +66,7 @@ public class ArticleDao implements IArticleDao {
         return list;
     }
 
-    //通过分类来得到该分类的所有文章
+    //通过来得到拥有column属性的所有文章
     @Override
     public List<Article> getArticleByColumn(String column, String value) {
         List<Article> list = null;
@@ -129,9 +129,28 @@ public class ArticleDao implements IArticleDao {
     }
 
 
+    //map
+        //key:种类
+        //value:这个种类文章的个数
     @Override
     public Map getColumAndCount(String search_column) {
-        return null;
+
+        String sql = " select " + search_column + " ,count(" + search_column + ") as counts  from t_article  group by "
+                + search_column;
+        Map map = null;
+        try {
+            PreparedStatement ps = DBUtils.getStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            map = new HashMap();
+            while (rs.next()) {
+                map.put(rs.getString(search_column), rs.getInt("counts"));
+            }
+            DBUtils.Close(ps, rs,null);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return map;
     }
     @Override
     public Article addArticle(Article a) {
@@ -195,15 +214,51 @@ public class ArticleDao implements IArticleDao {
     }
 
 
+    //通过id删除一篇文章
     @Override
     public boolean deleteArticle(String id) {
-        return true;
+        String sql = "delete from t_article where id=?";
+        PreparedStatement ps;
+        int result = 0;
+        try {
+            ps = DBUtils.getStatement(sql);
+            ps.setString(1, id);
+            result = ps.executeUpdate();
+            // 关闭连接
+            DBUtils.Close(ps, null, null);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return result != 0;
     }
 
 
     @Override
     public List getAllArticle() {
-       return null;
+        List<Article> list = new ArrayList();
+
+        String sql = "select * from article";
+        PreparedStatement ps;
+        try {
+            ps = DBUtils.getStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            // bean实例化
+            while (rs.next()) {
+                Article article = new Article(rs.getInt("article_id"), rs.getString("title"), rs.getString("author"),
+                        rs.getString("sort"), rs.getString("time"), rs.getInt("star"), rs.getInt("comment"),
+                        rs.getInt("visit"), rs.getString("content"));
+                list.add(article);
+            }
+            // 关闭连接
+            DBUtils.Close(ps, rs, null);
+            // 排序 article compareTo();
+            Collections.sort(list);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return list;
     }
 
 

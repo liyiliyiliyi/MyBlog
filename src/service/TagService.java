@@ -47,21 +47,16 @@ public class TagService {
 
     //获取标签和它所标记的文章
     public Map getTagAndArticle(String tag_name) {
-
-        System.out.println(tag_name);
         ArticleService as = ArticleService.getInstance();
         Map map = new HashMap();
 
         List<Tag> tag_list;
         if (tag_name.equals("all") || StringUtils.isEmpty(tag_name)) {
-            System.out.println("1");
             // 获取所有不重复的标签
             tag_list = dao.getAllTag();
         } else {
-            
             // 获取这个标签
             tag_list = dao.getTagByColumn("tag", tag_name);
-
         }
 
         // 有这个标签的文章
