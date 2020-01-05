@@ -229,7 +229,6 @@ public class ArticleDao implements IArticleDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println("999");
         return result != 0;
 
     }

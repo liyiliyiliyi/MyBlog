@@ -38,7 +38,7 @@
 </head>
 <body id="body">
 <div class="container-fluid">
-	<form action="../servlet/UpdateArticleServlet" method="post">
+	<form action="../servlet/UpdateArticleServlet">
 		<div id="head-div" class="row">
 			<div id="title-div" class="col-md-9">
 				<div class="input-group input-group-lg">
