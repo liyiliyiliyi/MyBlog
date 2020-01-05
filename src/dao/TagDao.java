@@ -58,7 +58,6 @@ public class TagDao implements ITagDao {
             Tag tag;
             while (set.next()) {
                 tag = new Tag();
-                //为了getTagByColumn函数执行，只保留String一个字母
                 tag.setTag(set.getString(1));
                 list.add(tag);
             }
@@ -79,7 +78,7 @@ public class TagDao implements ITagDao {
        return true;
     }
 
-   //通过column关键字找一类所有标签
+
     @Override
     public List getTagByColumn(String column, String value) {
         //column == tag,先这样，还没找到更好的sql语句
