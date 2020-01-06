@@ -41,7 +41,6 @@ function ajaxPost ( url , data , fnSucceed , fnFail , fnLoading ) {
     ajax.send(data);
 }
 
-var tag_count = document.getElementById("tag-count");
 
 /**
  * 获取日志分类标签数据
@@ -50,10 +49,17 @@ function getAST() {
     ajaxPost("/MyBlog/servlet/AskCountsServlet", "", getAST_Success, getAST_Fail);
 }
 function getAST_Success(res) {
+    var tag_count = document.getElementById("tag-count");
+    var sort_count = document.getElementById("sort-count");
+    var article_count = document.getElementById("article-count");
     console.log(res);
-    var tagCounts = res.split("=")[0];
-    tag_count.innerHTML = tagCounts;
-    console.log();
+    let temp = res.split("&");
+    var tagCounts = temp[0].split("=")[1];
+    var articleCounts = temp[1].split("=")[1];
+    var articleSortCounts = temp[2].split("=")[1];
+    tag_count.innerText = tagCounts;
+    sort_count.innerText = articleSortCounts;
+    article_count.innerText = articleCounts;
 }
 function getAST_Fail() {
 

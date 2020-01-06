@@ -62,13 +62,13 @@
 				<div class="row text-center blog-message">
 					<a href="">
 						<div class="col-md-4 blog-mes-div">
-							<strong>11</strong>
+							<strong id="article-count">11</strong>
 							<h5 class="text-muted">日志</h5>
 						</div>
 					</a>
 					<a href="">
 						<div class="col-md-4 blog-mes-div">
-							<strong>10</strong>
+							<strong id="sort-count">10</strong>
 							<h5 class="text-muted">分类</h5>
 						</div>
 					</a>
