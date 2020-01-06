@@ -17,7 +17,7 @@ function getXHR(){
  * @param article_id
  */
 function love_article(article_id){
-    var url = "/Blog/AriStarServlet?id="+article_id ;
+    var url = "/MyBlog/servlet/StarServlet?id="+article_id ;
     // 获取ajax
     var xmlhttp = getXHR();
     xmlhttp.onreadystatechange = function() {
@@ -28,7 +28,7 @@ function love_article(article_id){
             var res = eval('(' + res + ')');
             if (res.msg == "success") {
                 //返回 ”success“
-                document.getElementById("love").innerHTML= "&nbsp;"+ res.new_star+"&nbsp;";
+                document.getElementById("ic-like").innerHTML= "&nbsp;"+ res.new_star+"&nbsp;";
             }else{
                 alert("不要狂点呀...");
             }
@@ -44,7 +44,7 @@ function love_article(article_id){
  */
 function deletecm(component,comm_id){
     var container = component.parentNode.parentNode;
-    var url = "/Blog/CMDeleServlet?id="+comm_id ;
+    var url = "/MyBlog/CMDeleServlet?id="+comm_id ;
     // 获取ajax
     var xmlhttp = getXHR();
     xmlhttp.onreadystatechange = function() {
