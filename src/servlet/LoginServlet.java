@@ -21,22 +21,10 @@ public class LoginServlet extends HttpServlet {
         if(LoginUtils.login(request) == false){
             request.getRequestDispatcher("login.jsp").forward(request,response);
         }
-        ArticleService as = ArticleService.getInstance();
-        TagService ts = TagService.getInstance();
 
-        // 初始化侧边栏 日志、分类、标签的个数
-        request.setAttribute("article_number",as.getCount(IArticleDao.SEARCH_ARTICLE));
-        request.setAttribute("sort_number", as.getCount(IArticleDao.SEARCH_SORT));
-        request.setAttribute("tags_number",ts.getTagCounts());
-
-        // 阅读排行
-        request.setAttribute("visit_rank",as.getVisitRank());
-
-        // 初始化文章列表
-        request.setAttribute("article_list",as.getArticle());
-
-        request.getRequestDispatcher("pages/main.jsp").forward(request,response);
-
+        //为什么服务器跳转不行,使用客户端跳转可以实现过滤器功能
+       //  request.getRequestDispatcher("pages/main.jsp").forward(request,response);
+        response.sendRedirect("pages/main.jsp");
 
     }
 

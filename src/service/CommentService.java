@@ -34,6 +34,11 @@ public class CommentService {
     }
 
     public boolean addComment(Comment comment) {
+
         return idao.addComment(comment);
+    }
+
+    public boolean deleteComment(int id) {
+        return idao.deleteComment(id);
     }
 }

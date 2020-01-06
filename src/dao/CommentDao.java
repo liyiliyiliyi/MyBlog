@@ -66,9 +66,48 @@ public class CommentDao implements ICommentDao {
 
     @Override
     public boolean deleteComment(int comment_id) {
+
+        PreparedStatement ps;
+        String sql = "DELETE FROM comment WHERE c_id=" + comment_id;
+        int result = 0;
+
+        article_sub_comemnt(comment_id);
+        try {
+            ps = DBUtils.getStatement(sql);
+            result = ps.executeUpdate();
+
+            DBUtils.Close(ps,null,null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if(result > 0) {
+            return true;
+        }
         return false;
     }
 
+    /**
+     * 删除评论后文章记录的评论减1
+     * @param comment_id
+     */
+    private void article_sub_comemnt(int comment_id){
+    PreparedStatement ps;
+    String sql = "SELECT article_id FROM comment WHERE id =" + comment_id;
+        try {
+            ps = DBUtils.getStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            int article_id = 0;
+            if(rs.next()) {
+                article_id = rs.getInt("article_id");
+            }
+            sql = "UPDATE article SET COMMENT=COMMENT - 1 WHERE id=" + article_id;
+            ps = DBUtils.getStatement(sql);
+            ps.executeUpdate();
+            DBUtils.Close(ps,rs,null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public List getComment(int article_id) {
         String sql = "SELECT * FROM comment WHERE article_id=? ORDER BY TIME";
