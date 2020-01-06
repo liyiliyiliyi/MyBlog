@@ -119,7 +119,7 @@
 					</div>
 					<!-- 这里初始化阅读排行 -->
 					<c:forEach var="a"  items="${visit_rank}">
-						<a href="/Blog/ArticleServlet?id=${a.id}">
+						<a href="/MyBlog/ArticleServlet?id=${a.id}">
 							<div class="panel-body">
 									${a.title}&nbsp;&nbsp; <span class="c_right">(${a.visit})</span>
 							</div>
