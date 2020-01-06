@@ -44,7 +44,7 @@
 				<div class="input-group input-group-lg">
 					<input type="hidden" name="article_id">
 					<span class="title input-group-addon">标题</span>
-					<input class="form-control" placeholder="${edit_article.title}" id="title-input" type="text" name="title" value="${edit_article.title}" onfocus="if (value=='输入文章标题') {value=''}" onblur="if (value=='') {value='输入文章标题'}">
+					<input class="form-control" placeholder="输入文章标题" required id="title-input" type="text" name="title" value="${edit_article.title}">
 				</div>
 				<div id="msg-div" class="row">
 					<input type="hidden" name="time" value="">
@@ -55,10 +55,10 @@
                         <span class="input-group-addon">时间</span><input class="message-input form-control" placeholder="${edit_article.time}" type="text" id="time" name="time" disabled value="${edit_article.time}"></input>
                     </div>
 					<div class="col-md-2 input-group message-group">
-						<span class="input-group-addon">分类</span><input class="message-input form-control" placeholder="${edit_article.sort}" type="text" name="sort" value="${edit_article.sort}">
+						<span class="input-group-addon">分类</span><input class="message-input form-control" required placeholder="请输入分类" type="text" name="sort" value="${edit_article.sort}">
 					</div>
 					<div class="col-md-3 input-group message-group">
-						<span class="input-group-addon">标签</span><input class="message-input form-control" placeholder="${all_tag}" type="text" name="tags" value="${all_tag}">
+						<span class="input-group-addon">标签</span><input class="message-input form-control" required placeholder="请输入标签" type="text" name="tags" value="${all_tag}">
 					</div>
 				</div>
 			</div>
