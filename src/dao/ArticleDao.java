@@ -239,7 +239,6 @@ public class ArticleDao implements IArticleDao {
         try {
             ps = DBUtils.getStatement(sql);
             ps.setString(1, id);
-            ResultSet set = ps.executeQuery();
             result = ps.executeUpdate();
             // 关闭连接
             DBUtils.Close(ps, null, null);

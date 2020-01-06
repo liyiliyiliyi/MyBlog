@@ -182,7 +182,6 @@ public class ArticleService {
      */
     public void addVisit(int article_id){
         boolean f = dao.addVisit(article_id);
-
     }
     public int starArticle(int id) {
         return dao.star_article(id);

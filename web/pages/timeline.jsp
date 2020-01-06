@@ -86,7 +86,7 @@
 						<c:otherwise>
 							<div class="line_div">
 								<div>
-									<a href="/Blog/ArticleServlet?id=${axis.id}">&nbsp;&nbsp;${axis.month}-${axis.day}
+									<a href="/servlet/ArticleServlet?id=${axis.id}">&nbsp;&nbsp;${axis.month}-${axis.day}
 									&nbsp;&nbsp;&nbsp;&nbsp;${axis.title}
 									</a>
 								</div>

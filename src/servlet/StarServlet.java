@@ -15,6 +15,7 @@ import java.io.IOException;
 public class StarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
         // 业务操作 获取文章id
         String id = request.getParameter("id");
         // 返回的数据

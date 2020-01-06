@@ -90,7 +90,7 @@
 					<li class="list-group-item">
 								<div>
 									<div>
-										<a href="/Blog/ArticleServlet?id=${list.id}">${list.title}</a>
+										<a href="/servlet/ArticleServlet?id=${list.id}">${list.title}</a>
 									</div>
 									<div class="c_right">
 									<img src="images/time.png">
