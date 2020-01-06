@@ -41,14 +41,19 @@ function ajaxPost ( url , data , fnSucceed , fnFail , fnLoading ) {
     ajax.send(data);
 }
 
+var tag_count = document.getElementById("tag-count");
+
 /**
  * 获取日志分类标签数据
  */
 function getAST() {
-    ajaxPost("MyBlog/servlet/AskCountsServlet", "", getAST_Success, getAST_Fail);
+    ajaxPost("/MyBlog/servlet/AskCountsServlet", "", getAST_Success, getAST_Fail);
 }
 function getAST_Success(res) {
     console.log(res);
+    var tagCounts = res.split("=")[0];
+    tag_count.innerHTML = tagCounts;
+    console.log();
 }
 function getAST_Fail() {
 

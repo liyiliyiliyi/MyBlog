@@ -74,7 +74,7 @@
 					</a>
 					<a href="">
 						<div class="col-md-4 blog-mes-div">
-							<strong>12</strong>
+							<strong id="tag-count">12</strong>
 							<h5 class="text-muted">标签</h5>
 						</div>
 					</a>
