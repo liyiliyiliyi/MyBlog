@@ -146,8 +146,8 @@ public class ArticleDao implements IArticleDao {
 
 
     //map
-        //key:种类
-        //value:这个种类文章的个数
+    //key:种类
+    //value:这个种类文章的个数
     @Override
     public Map getColumAndCount(String search_column) {
 
@@ -209,7 +209,7 @@ public class ArticleDao implements IArticleDao {
     }
 
 
-     //获取最新的文章
+    //获取最新的文章
     private Article getLastArticle() {
         String sql = "SELECT * FROM article ORDER BY TIME DESC LIMIT 1";
         PreparedStatement  pstatement;
@@ -230,9 +230,10 @@ public class ArticleDao implements IArticleDao {
     }
 
 
-    //通过id删除一篇文章
+    //通过id删除一篇文章,删文章的同时必须删除tag表的一行数据
     @Override
     public boolean deleteArticle(String id) {
+        //删除文章表的文章
         String sql = "delete from article where article_id = ?";
         PreparedStatement ps;
         int result = 0;
@@ -242,6 +243,20 @@ public class ArticleDao implements IArticleDao {
             result = ps.executeUpdate();
             // 关闭连接
             DBUtils.Close(ps, null, null);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        //删除标签表的标签
+        String sq2 = "delete from tag where article_id = ?";
+        PreparedStatement ps2;
+        try {
+            ps2 = DBUtils.getStatement(sq2);
+            ps2.setString(1, id);
+            result = ps2.executeUpdate();
+            // 关闭连接
+            DBUtils.Close(ps2, null, null);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -279,63 +294,21 @@ public class ArticleDao implements IArticleDao {
     }
 
 
-    /**
-     *向article表中通过查询visit获得阅读排行
-     * @return
-     */
     @Override
     public List getVisitRank() {
-        List<Article> list = new ArrayList<Article>();
-        String sql = "SELECT * FROM article ORDER BY visit DESC";
-        PreparedStatement pstatement;
-
-        try {
-            pstatement = DBUtils.getStatement(sql);
-            ResultSet rs = pstatement.executeQuery();
-            while ((rs.next())) {
-                Article article = new Article(rs.getInt("article_id"), rs.getString("title"), rs.getString("author"),
-                        rs.getString("sort"), rs.getString("time"), rs.getInt("star"), rs.getInt("comment"),
-                        rs.getInt("visit"), rs.getString("content"));
-                list.add(article);
-            }
-
-            DBUtils.Close(pstatement, rs, null);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
+        return null;
     }
 
     @Override
     public int getCount(String search_key) {
-        String sql;
-        int count = 0;
-        PreparedStatement pstatement;
-        if(search_key.equals(SEARCH_ARTICLE)) {
-            sql = "SELECT COUNT(id) FROM article";
-        } else {
-            sql = "SELECT COUNT(DISTINCT(sort)) FROM article";
-        }
-
-        try {
-            pstatement = DBUtils.getStatement(sql);
-            ResultSet rs = pstatement.executeQuery();
-            if(rs.next()) {
-                count = rs.getInt(1);
-            }
-            DBUtils.Close(pstatement,rs,null);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return count;
+        return 1;
     }
 
 
     //给文章点赞，通过文章id得到这篇文章的点赞数
     @Override
     public int star_article(int id) {
-        String sql = "update t_article set star=star+1 where id=" + id;
+        String sql = "update article set star=star+1 where article_id=" + id;
         int result = 0;
         try {
             PreparedStatement ps = DBUtils.getStatement(sql);
