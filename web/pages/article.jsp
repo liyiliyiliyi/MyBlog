@@ -41,49 +41,7 @@
 
 	<script src="/MyBlog/pages/editormd/editormd.min.js"></script>
 
-	<style>
-		body {
-			background: #F5F7F9;
-		}
-		.info {
-			background: #fff;
-			padding-top: 5%;
-			border-radius: 8px;
-		}
-		.blog-message {
-			margin-left: 10%;
-			margin-right: 10%;
-		}
-		.blog-mes-div {
-			padding: 0;
-		}
-		.blog-nav {
-			background: #fff;
-			margin-top: 10%;
-			border-radius: 8px;
-		}
-		.blog-visit {
-			margin-top: 10%;
-		}
-		.blog-right {
-			background: #fff;
-		}
-		#mdView {
-			border-radius: 10px;
-			margin-bottom: 15px;
-		}
-		.title-msg {
-			margin-left: 10px;
-			margin-right: 10px;
-		}
-		.title-msg-div {
-			margin-top: 3%;
-			margin-bottom: 3%;
-		}
-		.container {
-			margin-top: 30px;
-		}
-	</style>
+	<link rel="stylesheet" href="/MyBlog/css/article.css">
 </head>
 <body>
 <div class="container">
