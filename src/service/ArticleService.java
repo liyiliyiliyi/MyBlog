@@ -87,6 +87,11 @@ public class ArticleService {
         return dao.getArticleByColumn(column, value);
     }
 
+    public Article getArticle (int article_id) {
+
+        return dao.getArticle(article_id);
+    }
+
     /**
      *  获取上一篇文章---参数LESS为1
      * @param time
@@ -171,9 +176,12 @@ public class ArticleService {
         return result;
     }
 
-    public Article getArticle(int article_id) {
-
-       return dao.getArticle(article_id);
+    /**
+     * 向article数据库中增加访问记录
+     * @param article_id
+     */
+    public void addVisit(int article_id){
+        boolean f = dao.addVisit(article_id);
 
     }
 }

@@ -18,7 +18,7 @@ public interface IArticleDao {
      *
      * @param article_id
      */
-    void addVisit(int article_id);
+    boolean addVisit(int article_id);
 
     /**
      * 获取上一文章 或 下一文章

@@ -96,7 +96,23 @@ public class ArticleDao implements IArticleDao {
 
     //增加访客人数
     @Override
-    public void addVisit(int article_id) {
+    public boolean addVisit(int article_id) {
+
+        String sql = "update article set visit = visit+1 where article_id = "+ article_id;
+        PreparedStatement ps;
+        int count = 0;
+        try {
+            ps = DBUtils.getStatement(sql);
+            count = ps.executeUpdate();
+
+            DBUtils.Close(ps,null,null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if(count > 0){
+            return true;
+        }
+        return false;
     }
 
     //获得上or下一篇文章
