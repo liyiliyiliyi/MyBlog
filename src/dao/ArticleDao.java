@@ -298,6 +298,7 @@ public class ArticleDao implements IArticleDao {
                         rs.getInt("visit"), rs.getString("content"));
                 list.add(article);
             }
+
             DBUtils.Close(pstatement, rs, null);
         } catch (SQLException e) {
             e.printStackTrace();
