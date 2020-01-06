@@ -135,14 +135,14 @@
 			<c:if test="${sessionScope.user!=null}">
 			<div id="admin-btn">
 				<div class="adminbt">
-					<a href="/MyBlog/AddServlet">
+					<a href="/MyBlog/pages/add.jsp">
 						<button type="button" class="adminbt button button-rounded button-plain button-small-caps button-border">
 							<span class=" glyphicon glyphicon-plus">写新文章</span>
 						</button>
 					</a>
 				</div>
 				<div class="adminbt">
-					<a href="/My/servlet/AdminServlet" class="pull-right">
+					<a href="/MyBlog/servlet/AdminServlet" class="pull-right">
 						<button type="button" class="adminbt button button-rounded button-plain button-small-caps button-border">
 							<span class=" glyphicon glyphicon glyphicon-user">管理更多</span>
 						</button>

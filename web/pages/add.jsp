@@ -45,7 +45,7 @@
 				<div class="input-group input-group-lg">
 					<input type="hidden" name="article_id">
 					<span class="title input-group-addon">标题</span>
-					<input class="form-control" placeholder="输入文章标题" id="title-input" type="text" name="title" value="输入文章标题" onfocus="if (value=='输入文章标题') {value=''}" onblur="if (value=='') {value='输入文章标题'}">
+					<input class="form-control" placeholder="输入文章标题" required id="title-input" type="text" name="title" value="" >
 				</div>
 				<div id="msg-div" class="row">
 					<input type="hidden" name="time" value="">
@@ -53,10 +53,10 @@
 						<span class="input-group-addon">作者</span><input class="message-input form-control" placeholder="作者" type="text" id="author" disabled value="<%=((User)request.getSession().getAttribute("user")).getUser_name()%>"></input>
 					</div>
 					<div class="col-md-3 input-group message-group">
-						<span class="input-group-addon">分类</span><input class="message-input form-control" placeholder="请输入分类" type="text" name="sort">
+						<span class="input-group-addon">分类</span><input class="message-input form-control" required placeholder="请输入分类" type="text" name="sort">
 					</div>
 					<div class="col-md-3 input-group message-group">
-						<span class="input-group-addon">标签</span><input class="message-input form-control" placeholder="请输入标签" type="text" name="tags">
+						<span class="input-group-addon">标签</span><input class="message-input form-control" required placeholder="请输入标签" type="text" name="tags">
 					</div>
 				</div>
 			</div>
