@@ -8,6 +8,7 @@ var submit_btn = document.getElementById("submit");
 var input_pass = document.getElementById("inputPassword");
 var input_repat = document.getElementById("repeatPassword");
 var warning_repat = document.getElementById("warning-repeat");
+var warning_password = document.getElementById("warning-password");
 var login_action = "/MyBlog/LoginServlet";
 var reg_action = "/MyBlog/RegisterServlet";
 
@@ -31,6 +32,8 @@ function login_page() {
     repeat_pass.style.display = "none";
     submit_btn.innerHTML = "登录";
     repeat_pass.required=false;
+    warning_password.innerHTML = "";
+    warning_repat.innerHTML = "";
     fm.action = login_action;
 }
 
@@ -40,6 +43,8 @@ function regist_page() {
     repeat_pass.style.display = "block";
     submit_btn.innerHTML = "注册";
     repeat_pass.required=true;
+    warning_password.innerHTML = "";
+    warning_repat.innerHTML = "";
     fm.action = reg_action;
 }
 function check_repeat() {

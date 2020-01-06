@@ -1,4 +1,4 @@
-
+var container; // 要删除的评论的节点
 /*
 * 获取ajax处理对象
  * @returns {xmlhttp}
@@ -41,9 +41,9 @@ function likeArticleCallback(result) {
  *删除评论
  */
 function deletecm(component,comm_id){
-    var container = component.parentNode.parentNode;
-    var url = "/MyBlog/CMDeleServlet?id="+comm_id ;
-    ajaxSend(url, "POST", "", deleteCommentCallback, consoleFun, emptyfun);
+    container = component.parentNode.parentNode;
+    var url = "/MyBlog/CMDeleteServlet?id="+comm_id ;
+    ajaxSend(url, "post", "", deleteCommentCallback, consoleFun, emptyfun);
 }
 
 function deleteCommentCallback(result) {

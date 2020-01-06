@@ -254,7 +254,6 @@ ${article.content}
 				<div class="to-top-div"><span class="glyphicon glyphicon-chevron-up"></span></div>
 			</div>
 		</div>
-
 	</div>
 </div>
 <script type="text/javascript">
