@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/servlet/AskCountsServlet")
 public class AskCountsServlet extends HttpServlet {
@@ -19,6 +20,9 @@ public class AskCountsServlet extends HttpServlet {
         int tagCounts = TagService.getInstance().getTagCounts();
         int articleCounts = ArticleService.getInstance().getArticleCounts();
         int articleSortCounts = ArticleService.getInstance().getArticleSortCounts();
+
+        //传标签的前三
+//        List list = TagService.getInstance().getTagCounts();
         response.getWriter().write("tagCounts=" + tagCounts + "&articleCounts=" + articleCounts + "&articleSortCounts=" + articleSortCounts);
 
     }

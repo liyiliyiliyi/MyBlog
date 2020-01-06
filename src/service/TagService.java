@@ -49,7 +49,6 @@ public class TagService {
     public Map getTagAndArticle(String tag_name) {
         ArticleService as = ArticleService.getInstance();
         Map map = new HashMap();
-
         List<Tag> tag_list;
         if (tag_name.equals("all") || StringUtils.isEmpty(tag_name)) {
             // 获取所有不重复的标签

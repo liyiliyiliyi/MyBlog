@@ -349,7 +349,7 @@ public class ArticleDao implements IArticleDao {
     //给文章点赞，通过文章id得到这篇文章的点赞数
     @Override
     public int star_article(int id) {
-        String sql = "update t_article set star=star+1 where id=" + id;
+        String sql = "update article set star=star+1 where article_id=" + id;
         int result = 0;
         try {
             PreparedStatement ps = DBUtils.getStatement(sql);
