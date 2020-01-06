@@ -11,17 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AskCountsServlet")
+@WebServlet("/servlet/AskCountsServlet")
 public class AskCountsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       int tagCounts = TagService.getInstance().getTagCounts();
+        int tagCounts = TagService.getInstance().getTagCounts();
 
 
-        response.getWriter().write("tagCounts"+tagCounts);
+        response.getWriter().write("tagCounts="+tagCounts);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 }

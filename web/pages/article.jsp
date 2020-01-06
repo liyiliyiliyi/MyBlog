@@ -41,6 +41,8 @@
 
 	<script src="/MyBlog/pages/editormd/editormd.min.js"></script>
 
+	<script src="/MyBlog/js/common.js"></script>
+
 	<link rel="stylesheet" href="/MyBlog/css/article.css">
 </head>
 <body>
