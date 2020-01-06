@@ -93,6 +93,20 @@ public class ArticleService {
     }
 
     /**
+     * 获取 所有文章 截取文章长度 截取一下时间 去掉时 分钟 秒
+     *
+     * @return
+     */
+    public List getArticle() {
+        List<Article> list = dao.getAllArticle();
+        for (Article a : list) {
+            ArticleUtils.cutContent(list);
+            ArticleUtils.cutTime(list);
+        }
+        return list;
+    }
+
+    /**
      *  获取上一篇文章---参数LESS为1
      * @param time
      * @return
@@ -183,6 +197,34 @@ public class ArticleService {
     public void addVisit(int article_id){
         boolean f = dao.addVisit(article_id);
 
+    }
+
+    /**
+     * 获取文章的数量 或 分类的数量
+     *
+     * @param search_key
+     * @return
+     */
+    public int getCount(String search_key) {
+        return dao.getCount(search_key);
+    }
+
+    public List getVisitRank(){
+        List list = dao.getVisitRank();
+        //显示前十篇
+        if(list.size() > 10) {
+            for(int i = 0; i < list.size(); i++) {
+                list.remove(i);
+            }
+        }
+        //
+        for(int j = 0; j < list.size(); j++) {
+            Article a = (Article) list.get(j);
+            if(a.getTitle().length() > 10) {
+                a.setTitle(StringUtils.cutString(a.getTitle(), 0, 8)+"...");
+            }
+        }
+        return list;
     }
     public int starArticle(int id) {
         return dao.star_article(id);
