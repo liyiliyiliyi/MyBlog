@@ -39,13 +39,16 @@ function ajaxSend (url, method, data, fnSucceed, fnFail, fnLoading) {
     }
     ajax.send(data);
 }
-
+function consoleFun(res) {
+    console.log(res);
+}
+function emptyFun() {}
 
 /**
  * 获取日志分类标签数据
  */
 function getAST() {
-    ajaxSend("/MyBlog/servlet/AskCountsServlet", "POST" , "", getAST_Success);
+    ajaxSend("/MyBlog/servlet/AskCountsServlet", "POST" , "", getAST_Success, consoleFun, emptyFun);
 }
 function getAST_Success(res) {
     var tag_count = document.getElementById("tag-count");

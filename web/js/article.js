@@ -18,24 +18,22 @@ function getXHR(){
  */
 function love_article(article_id){
     var url = "/MyBlog/servlet/StarServlet?id="+article_id ;
-    // 获取ajax
-    var xmlhttp = getXHR();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            // 处理服务器收到的请求响应
-            var res = xmlhttp.responseText;
-            // 解析json对象
-            var res = eval('(' + res + ')');
-            if (res.msg == "success") {
-                //返回 ”success“
-                document.getElementById("ic-like").innerHTML= "&nbsp;"+ res.new_star+"&nbsp;";
-            }else{
-                alert("不要狂点呀...");
-            }
-        }
+    ajaxSend(url, "POST", "", likeArticleCallback, consoleFun, emptyfun);
+}
+
+/**
+ * 点赞成功的回调函数
+ * @param res
+ */
+function likeArticleCallback(result) {
+    // 解析json对象
+    var res = eval('(' + result + ')');
+    if (res.msg == "success") {
+        //返回 ”success“
+        document.getElementById("like-article").innerHTML= res.new_star;
+    }else{
+        alert("已经点过赞了噢...");
     }
-    xmlhttp.open("POST", url, true);
-    xmlhttp.send();
 }
 
 
@@ -45,28 +43,22 @@ function love_article(article_id){
 function deletecm(component,comm_id){
     var container = component.parentNode.parentNode;
     var url = "/MyBlog/CMDeleServlet?id="+comm_id ;
-    // 获取ajax
-    var xmlhttp = getXHR();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            // 处理服务器收到的请求响应
-            var res = xmlhttp.responseText;
-            // 解析json对象
-            var res = eval('(' + res + ')');
-            //alert( res.msg );
-            if(res.msg == "success"){
-                //删除评论的视图
-                var p = container.parentNode;
-                p.removeChild(container);
-            }
-        }
-    }
-    xmlhttp.open("POST", url, true);
-    xmlhttp.send();
+    ajaxSend(url, "POST", "", deleteCommentCallback, consoleFun, emptyfun);
 }
 
+function deleteCommentCallback(result) {
+    // 解析json对象
+    var res = eval('(' + result + ')');
+    if(res.msg == "success"){
+        //删除评论的视图
+        var p = container.parentNode;
+        p.removeChild(container);
+    }
+}
+function emptyfun() {}
+
 /**
- * 点击了star
+ * 顶评论
  */
 function star(component , comm_id) {
 
@@ -92,11 +84,11 @@ function star(component , comm_id) {
 }
 
 /**
- * 点击了diss
+ * 踩评论
  */
 function diss(component , comm_id) {
 
-    var url = "/Blog/CMDissServlet?id="+comm_id;
+    var url = "/MyBlog/CMDissServlet?id="+comm_id;
     // 获取ajax
     var xmlhttp = getXHR();
     xmlhttp.onreadystatechange = function() {
