@@ -184,4 +184,14 @@ public class ArticleService {
         boolean f = dao.addVisit(article_id);
 
     }
+    public int starArticle(int id) {
+        return dao.star_article(id);
+    }
+    public int getArticleCounts() {
+        return dao.getAllArticle().size();
+    }
+    public int getArticleSortCounts() {
+        return dao.getAllArticle().size();
+    }
+
 }
