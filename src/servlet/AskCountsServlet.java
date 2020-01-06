@@ -19,7 +19,7 @@ public class AskCountsServlet extends HttpServlet {
         int tagCounts = TagService.getInstance().getTagCounts();
         int articleCounts = ArticleService.getInstance().getArticleCounts();
         int articleSortCounts = ArticleService.getInstance().getArticleSortCounts();
-        response.getWriter().write("tagCounts=" + tagCounts + "&articleCounts=" + articleCounts + "&articleSortCounts" + articleSortCounts);
+        response.getWriter().write("tagCounts=" + tagCounts + "&articleCounts=" + articleCounts + "&articleSortCounts=" + articleSortCounts);
 
     }
 
