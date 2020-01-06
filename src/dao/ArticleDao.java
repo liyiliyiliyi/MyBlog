@@ -312,7 +312,7 @@ public class ArticleDao implements IArticleDao {
         int count = 0;
         PreparedStatement pstatement;
         if(search_key.equals(SEARCH_ARTICLE)) {
-            sql = "SELECT COUNT(id) FROM article";
+            sql = "SELECT COUNT(article_id) FROM article";
         } else {
             sql = "SELECT COUNT(DISTINCT(sort)) FROM article";
         }

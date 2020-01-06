@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
-@WebServlet("/servlet/NewCommentServlet")
+@WebServlet("/NewCommentServlet")
 public class NewCommentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -57,7 +57,6 @@ public class NewCommentServlet extends HttpServlet {
             info = "repeat submit comment!";
         }
 
-        System.out.println(info);
         // 将评论信息存储cookie，用于上面判断
         Cookie c = new Cookie("cookie_name", cookie_name);
         //设置在磁盘生存的时间为一分钟

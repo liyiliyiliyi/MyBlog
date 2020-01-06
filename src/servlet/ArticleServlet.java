@@ -36,9 +36,9 @@ public class ArticleServlet extends HttpServlet {
         // 获取下一篇文章
         request.setAttribute("article_next", as.getNextArticle(a.getTime()));
 
-        // 加载文章评论
-       // CommentService cs = CommentService.getInstance();
-       // request.setAttribute("comment", cs.loadComment(a.getId()));
+        // 加载该文章评论
+        CommentService cs = CommentService.getInstance();
+        request.setAttribute("comment", cs.loadComment(a.getId()));
 
 
         //服务器跳转

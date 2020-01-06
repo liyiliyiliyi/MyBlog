@@ -211,13 +211,13 @@ public class ArticleService {
 
     public List getVisitRank(){
         List list = dao.getVisitRank();
-        //显示前十篇
+        //只显示前十篇
         if(list.size() > 10) {
             for(int i = 0; i < list.size(); i++) {
                 list.remove(i);
             }
         }
-        //
+        //将文章标题设为显示9个字符
         for(int j = 0; j < list.size(); j++) {
             Article a = (Article) list.get(j);
             if(a.getTitle().length() > 10) {

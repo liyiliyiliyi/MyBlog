@@ -76,14 +76,13 @@ public class CommentDao implements ICommentDao {
         PreparedStatement pstatement;
         try {
             pstatement = DBUtils.getStatement(sql);
-            //应该是get？
             pstatement.setInt(1, article_id);
             ResultSet rs = pstatement.executeQuery();
             Comment cm;
             list = new ArrayList();
             while(rs.next()) {
                 cm = new Comment();
-                cm.setId(rs.getInt("id"));
+                cm.setId(rs.getInt("c_id"));
                 cm.setArticle_id(rs.getInt("article_id"));
                 cm.setNickname(rs.getString("nickname"));
                 cm.setTime(rs.getString("time"));
