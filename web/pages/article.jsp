@@ -43,15 +43,17 @@
 
 	<script src="/MyBlog/js/common.js"></script>
 
+	<link rel="stylesheet" href="/MyBlog/css/common.css">
 	<link rel="stylesheet" href="/MyBlog/css/article.css">
 </head>
 <body>
 <div class="container">
 	<div class="row center-block">
 		<div class="col-md-3">
+			<!--顶部的头像即信息-->
 			<div class="info">
 				<div id="title" class="text-center">
-					<h2><a href="/MyBlog/login.html">MyBlog</a></h2>
+					<h2><a href="/MyBlog/pages/main.jsp">MyBlog</a></h2>
 					<h5 class="text-muted">Winner Winner Chicken Dinner!</h5>
 				</div>
 				<div class="text-center" id="person_info">
@@ -60,19 +62,19 @@
 					<h3>name</h3>
 				</div>
 				<div class="row text-center blog-message">
-					<a href="">
+					<a href="/MyBlog/pages/main.jsp">
 						<div class="col-md-4 blog-mes-div">
 							<strong id="article-count">11</strong>
 							<h5 class="text-muted">日志</h5>
 						</div>
 					</a>
-					<a href="">
+					<a href="/MyBlog/servlet/SortServlet?get=all">
 						<div class="col-md-4 blog-mes-div">
 							<strong id="sort-count">10</strong>
 							<h5 class="text-muted">分类</h5>
 						</div>
 					</a>
-					<a href="">
+					<a href="/MyBlog/servlet/TagServlet?get=all">
 						<div class="col-md-4 blog-mes-div">
 							<strong id="tag-count">12</strong>
 							<h5 class="text-muted">标签</h5>
@@ -80,23 +82,24 @@
 					</a>
 				</div>
 			</div>
+			<!--导航-->
 			<div class="blog-nav">
 				<ul class="nav nav-pills nav-stacked text-center">
 					<li class="">
-						<a href="/MyBlog/index.jsp">
+						<a href="/MyBlog/pages/main.jsp">
 							<span class="glyphicon glyphicon-home"></span>
 							&nbsp;&nbsp;首页</a>
 					</li>
 					<li>
-						<a href="../servlet/SortServlet?get=all"><span class="glyphicon glyphicon-list"></span>
+						<a href="/MyBlog/servlet/SortServlet?get=all"><span class="glyphicon glyphicon-list"></span>
 							&nbsp;&nbsp;分类</a>
 					</li>
 					<li>
-						<a href="../servlet/TagServlet?get=all"><span class="glyphicon glyphicon-tags"></span>
+						<a href="/MyBlog/servlet/TagServlet?get=all"><span class="glyphicon glyphicon-tags"></span>
 							&nbsp;&nbsp;标签</a>
 					</li>
 					<li>
-						<a href="../servlet/TimeLineServlet"><span class="glyphicon glyphicon-time"></span>
+						<a href="/MyBlog/servlet/TimeLineServlet"><span class="glyphicon glyphicon-time"></span>
 							&nbsp;&nbsp;时间轴</a>
 					</li>
 					<li>
@@ -108,6 +111,7 @@
 					</li>
 				</ul>
 			</div>
+			<!--阅读排行-->
 			<div class="blog-visit">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
@@ -126,6 +130,7 @@
 			</div><!-- visit-->
 
 		</div>
+		<!--博客右边内容-->
 		<div class="col-md-8 blog-right">
 			<!-- 文章内容 -->
 			<div >
@@ -151,6 +156,34 @@
 ${article.content}
 						</textarea>
 				</div>
+			</div>
+
+			<!--文章翻页-->
+			<div>
+				<div class="pull-left">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<c:choose>
+						<c:when test="${article_pre!=null}">
+							<a href="../servlet/ArticleServlet?id=${article_pre.id}">&nbsp;上一篇:${article_pre.title}</a>
+						</c:when>
+						<c:otherwise>
+							&nbsp;没有更早的文章了
+						</c:otherwise>
+					</c:choose>
+
+				</div>
+				<div class="pull-right">
+					<c:choose>
+						<c:when test="${article_next!=null}">
+							<a href="../servlet/ArticleServlet?id=${article_next.id}">下一篇:&nbsp;${article_next.title}</a>
+						</c:when>
+						<c:otherwise>
+							&nbsp;没有更多的文章了
+						</c:otherwise>
+					</c:choose>
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</div>
+				<br/>
 			</div>
 
 			<!-- 评论 -->
@@ -204,24 +237,52 @@ ${article.content}
 					<textarea style="resize:none; width:100%; height:180px;" name="w_content"></textarea>
 					<br/>
 					<br/>
-					<input  class="btn btn-default"  type="submit"   value="评论" onclick="onclick"/>
+					<input  class="btn btn-info pull-right"  type="submit"   value="评论" onclick="onclick"/>
 					<br/>
 				</form>
 			</div>
 			<!--  -->
 			<div class="line"></div>
 
-			<div id="footer">
-				<a href="../pages/main.jsp">MyBlog首页&nbsp;&nbsp;</a>|
-				<a href="#">&nbsp;&nbsp;返回顶部</a>
-			</div>
-			<!-- footer -->
 
+		</div>
+
+		<div class="col-md-1">
+			<!--点赞-->
+			<div class="like-div">
+				<svg class="like-svg"  style="fill:#969696; width: 20px;height: 20px;" onclick="love_article(${article.id})" id="ic-like" viewBox="0 0 1084 1024"><path d="M728.064 343.943529c-17.648941-2.891294-23.552-20.239059-26.503529-28.912941V104.026353C701.560471 46.200471 654.396235 0 595.425882 0c-53.007059 0-97.28 40.478118-106.134588 89.569882-29.997176 184.862118-138.541176 255.457882-217.630118 280.937412a26.142118 26.142118 0 0 0-18.130823 24.877177v560.067764c0 19.817412 16.022588 35.84 35.84 35.84h535.973647c56.018824-11.565176 94.328471-31.804235 120.892235-86.738823l120.832-416.105412c23.552-75.173647-14.757647-147.395765-100.231529-144.564706h-238.772706z m-571.813647 31.744H76.619294C35.358118 375.687529 0 410.383059 0 450.861176v462.426353c0 43.369412 32.406588 78.004706 76.619294 78.004706h79.631059c27.708235 0 50.115765-22.407529 50.115765-50.115764V425.863529a50.115765 50.115765 0 0 0-50.115765-50.115764z"></path></svg >
+			</div>
+			<!--返回顶部-->
+			<div class="back-to-top">
+				<div class="to-top-div"><span class="glyphicon glyphicon-chevron-up"></span></div>
+			</div>
 		</div>
 
 	</div>
 </div>
 <script type="text/javascript">
+
+	/**
+	 * 返回顶部按钮
+	 * @type {jQuery|HTMLElement}
+	 */
+	var backButton=$('.back-to-top');
+	function backToTop() {
+		$('html,body').animate({
+			scrollTop: 0
+		}, 800);
+	}
+	backButton.on('click', backToTop);
+
+	$(window).on('scroll', function () {/*当滚动条的垂直位置大于浏览器所能看到的页面的那部分的高度时，回到顶部按钮就显示 */
+		if ($(window).scrollTop() > $(window).height())
+			backButton.fadeIn();
+		else
+			backButton.fadeOut();
+	});
+	$(window).trigger('scroll');/*触发滚动事件，避免刷新的时候显示回到顶部按钮*/
+
+
     $(function mdToHtml() {
         //获取要显示的内容
         var content = $("#article_content").text();

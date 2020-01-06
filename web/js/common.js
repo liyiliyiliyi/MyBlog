@@ -52,7 +52,6 @@ function getAST_Success(res) {
     var tag_count = document.getElementById("tag-count");
     var sort_count = document.getElementById("sort-count");
     var article_count = document.getElementById("article-count");
-    console.log(res);
     let temp = res.split("&");
     var tagCounts = temp[0].split("=")[1];
     var articleCounts = temp[1].split("=")[1];
