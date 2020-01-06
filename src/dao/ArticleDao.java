@@ -246,6 +246,20 @@ public class ArticleDao implements IArticleDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        //删除标签表的标签
+        String sq2 = "delete from tag where article_id = ?";
+        PreparedStatement ps2;
+        try {
+            ps2 = DBUtils.getStatement(sq2);
+            ps2.setString(1, id);
+            result = ps2.executeUpdate();
+            // 关闭连接
+            DBUtils.Close(ps2, null, null);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return result != 0;
 
     }
