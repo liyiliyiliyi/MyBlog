@@ -49,6 +49,15 @@
 	background: #888;
 	color: #fff;
 }
-#comment {
+.comment {
 	margin-top: 10%;
+}
+.comment-content {
+	border: 0px;
+}
+.line {
+	height: 1px;
+	border-bottom: 1px dashed #aaa;
+	color: #ccc;
+	margin: 15px 0px;
 }

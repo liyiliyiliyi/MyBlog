@@ -197,19 +197,19 @@ ${article.content}
 					<c:forEach var="comm" varStatus="status" items="${comment}">
 
 						<div class="" >
-							<div class="f_div">
+							<div class="comment-title">
 <%--								<img src="/Blog/img/comment.jpg" height="50" width="50"  class="img-circle"/>--%>
 								&nbsp;&nbsp;
 								<span style="color: #428bca"> ${comm.nickname}</span>
 								<span>&nbsp;&nbsp;${comm.time}</span>
 							</div>
 							<div  id="c_content" class="c_left">
-								<pre class="text-muted">${comm.content }</pre>
+								<pre class="text-muted comment-content">${comm.content }</pre>
 							</div>
-							<div class="r_div">
-								<a><span class="glyphicon glyphicon-thumbs-up"  onclick="star(this,${comm.id})">${comm.star}</span></a>
+							<div class="like-dislike">
+								<a>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"  onclick="star(this,${comm.id})"> ${comm.star}</span></a>
 								&nbsp;
-								<a><span class="glyphicon glyphicon-thumbs-down" onclick="diss(this,${comm.id})">${comm.diss}</span></a>
+								<a>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down" onclick="diss(this,${comm.id})"> ${comm.diss}</span></a>
 								&nbsp;
 								<!-- admin here -->
 								<c:if test="${sessionScope.user!=null}">
@@ -241,9 +241,6 @@ ${article.content}
 				</form>
 			</div>
 			<!--  -->
-			<div class="line"></div>
-
-
 		</div>
 
 		<div class="col-md-1">
