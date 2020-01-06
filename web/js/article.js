@@ -31,6 +31,7 @@ function likeArticleCallback(result) {
     if (res.msg == "success") {
         //返回 ”success“
         document.getElementById("like-article").innerHTML= res.new_star;
+        document.getElementById("ic-like").style.fill = "#F63D47";
     }else{
         alert("已经点过赞了噢...");
     }

@@ -1,5 +1,6 @@
+<%@ page import="model.Article" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 
 <!DOCTYPE html>
@@ -257,6 +258,22 @@ ${article.content}
 	</div>
 </div>
 <script type="text/javascript">
+	// 检测是否已经点赞文章
+	<%
+		int id = ((Article)request.getAttribute("article")).getId();
+		System.out.println(id);
+		Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+        	System.out.println(cookie.getName());
+            if (cookie.getName().equals("star_arti" + id) ) {
+                // 已经有了这个cookie
+	%>
+		document.getElementById("ic-like").style.fill = "#F63D47";
+	<%
+                break;
+            }
+        }
+	%>
 
 	/**
 	 * 返回顶部按钮
