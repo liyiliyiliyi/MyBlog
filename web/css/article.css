@@ -61,3 +61,18 @@
 	color: #ccc;
 	margin: 15px 0px;
 }
+.like-dislike {
+	margin-left: 15px;
+}
+.like-div {
+	text-align: center;
+	cursor: pointer;
+}
+#delete-comment {
+	margin-right: 15px;
+	font-size: 16px;
+	cursor: pointer;
+}
+#delete-comment :hover {
+	color: #c00;
+}
