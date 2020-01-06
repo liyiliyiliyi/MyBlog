@@ -28,8 +28,6 @@
 
 
 	<!-- 引入editormd相关 -->
-	<script src="/MyBlog/pages/editormd/jquery-3.4.1.min.js"></script>
-
 	<link rel="stylesheet" href="/MyBlog/pages/editormd/css/editormd.min.css" />
 	<script src="/MyBlog/pages/editormd/lib/marked.min.js"></script>
 	<script src="/MyBlog/pages/editormd/lib/prettify.min.js"></script>
@@ -41,8 +39,9 @@
 
 	<script src="/MyBlog/pages/editormd/editormd.min.js"></script>
 
+	<!--引入当前页面js及css-->
 	<script src="/MyBlog/js/common.js"></script>
-
+	<script src="/MyBlog/js/article.js"></script>
 	<link rel="stylesheet" href="/MyBlog/css/common.css">
 	<link rel="stylesheet" href="/MyBlog/css/article.css">
 </head>
@@ -164,7 +163,7 @@ ${article.content}
 					<span class="glyphicon glyphicon-chevron-left"></span>
 					<c:choose>
 						<c:when test="${article_pre!=null}">
-							<a href="../servlet/ArticleServlet?id=${article_pre.id}">&nbsp;上一篇:${article_pre.title}</a>
+							<a href="/MyBlog/ArticleServlet?id=${article_pre.id}">&nbsp;上一篇:${article_pre.title}</a>
 						</c:when>
 						<c:otherwise>
 							&nbsp;没有更早的文章了
@@ -175,7 +174,7 @@ ${article.content}
 				<div class="pull-right">
 					<c:choose>
 						<c:when test="${article_next!=null}">
-							<a href="../servlet/ArticleServlet?id=${article_next.id}">下一篇:&nbsp;${article_next.title}</a>
+							<a href="/MyBlog/ArticleServlet?id=${article_next.id}">下一篇:&nbsp;${article_next.title}</a>
 						</c:when>
 						<c:otherwise>
 							&nbsp;没有更多的文章了
@@ -197,15 +196,15 @@ ${article.content}
 				<c:if test="${comment!=null}">
 					<c:forEach var="comm" varStatus="status" items="${comment}">
 
-						<div class="row" >
+						<div class="" >
 							<div class="f_div">
-								<img src="/Blog/img/comment.jpg" height="50" width="50"  class="img-circle"/>
+<%--								<img src="/Blog/img/comment.jpg" height="50" width="50"  class="img-circle"/>--%>
 								&nbsp;&nbsp;
 								<span style="color: #428bca"> ${comm.nickname}</span>
 								<span>&nbsp;&nbsp;${comm.time}</span>
 							</div>
 							<div  id="c_content" class="c_left">
-								<pre>${comm.content }</pre>
+								<pre class="text-muted">${comm.content }</pre>
 							</div>
 							<div class="r_div">
 								<a><span class="glyphicon glyphicon-thumbs-up"  onclick="star(this,${comm.id})">${comm.star}</span></a>
@@ -231,13 +230,13 @@ ${article.content}
 			<!-- 写评论 -->
 			<div id="comment">
 
-				<form action="../servlet/NewCommentServlet?id=${article.id}" method="post">
+				<form action="/MyBlog/NewCommentServlet?id=${article.id}" method="post">
 					<input  style="width:30%" class="form-control" type="text" name="w_nickname" value="热心网友"  >
 					<br/>
 					<textarea style="resize:none; width:100%; height:180px;" name="w_content"></textarea>
 					<br/>
 					<br/>
-					<input  class="btn btn-info pull-right"  type="submit"   value="评论" onclick="onclick"/>
+					<input  class="btn btn-info pull-right"  type="submit"   value="评论"/>
 					<br/>
 				</form>
 			</div>

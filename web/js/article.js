@@ -70,7 +70,7 @@ function deletecm(component,comm_id){
  */
 function star(component , comm_id) {
 
-    var url = "/Blog/CMStarServlet?id="+comm_id ;
+    var url = "/MyBlog/CMStarServlet?id="+comm_id ;
     // 获取ajax
     var xmlhttp = getXHR();
     xmlhttp.onreadystatechange = function() {
