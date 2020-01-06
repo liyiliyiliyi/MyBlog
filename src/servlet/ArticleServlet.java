@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/servlet/ArticleServlet")
+@WebServlet("/ArticleServlet")
 public class ArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -41,10 +41,9 @@ public class ArticleServlet extends HttpServlet {
        // request.setAttribute("comment", cs.loadComment(a.getId()));
 
 
-
-
         //服务器跳转
-        request.getRequestDispatcher("../pages/article.jsp").forward(request, response);
+        request.getRequestDispatcher("./pages/article.jsp").forward(request, response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
