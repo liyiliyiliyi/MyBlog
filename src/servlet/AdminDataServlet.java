@@ -39,7 +39,6 @@ public class AdminDataServlet extends HttpServlet {
                 System.out.println("ceshi2");
                 String a_id2 = request.getParameter("article_id");
                 as.delteArticle(a_id2);
-
                 break;
 
         }

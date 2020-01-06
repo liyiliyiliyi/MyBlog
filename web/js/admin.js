@@ -23,7 +23,7 @@ function sendURL(url){
 			//这里可以测试
 		}
 	}
-	xmlhttp.open("Get", url, true);
+	xmlhttp.open("get", url, true);
 	xmlhttp.send();		
 }
 /**
@@ -56,116 +56,7 @@ function delete_article(hod , article_id){
 	var recorder_parent = recorder.parentNode;
 	recorder_parent.removeChild(recorder);
 	//send
-	var url = "/servlet/AdminDataServlet?op=delete_article"+"&&article_id="+article_id;
+	var url = "/MyBlog/servlet/AdminDataServlet?op=delete_article"+"&article_id="+article_id;
 	sendURL(url);
-}
 
-/**
- * 删除sort
- * @param hod
- * @param sort
- */
-function delet_sort(hod,sort){
-	
-	var input = findInputInClass("sort",sort);
-	
-	//remove 视图
-	var recorder = input.parentNode;
-	var recorder_parent = recorder.parentNode;
-	recorder_parent.removeChild(recorder);
-	//后台删除
-	var url = "../servlet/AdminDataServlet?op=sort_delete"+"&&sort="+sort;
-	sendURL(url);	
-}
-
-/**
- * hod 点击的span参数
- * sort 分类名字
- * @param hod
- * @param sort
- */
-
-var input; //保存input
-var temp;//保存input的上一个值
-function edit_sort(hod,sort){
-	
-	if(hod.innerHTML == "编辑"){
-	
-		input = findInputInClass("sort",sort);		
-		//保存input的原始值
-		temp = input.value;					
-		//允许input可以进行编辑
-		input.removeAttribute("disabled");			
-		
-		//实现input的光标定位
-		input.value="";	
-		input.focus();
-		input.value=temp;					
-		//修改hod内容为保存		
-		hod.innerHTML="保存";			
-	}else{		
-		//点击了保存
-		hod.innerHTML="编辑";	
-		input.setAttribute("disabled","disabled");
-		
-		//提交修改请求
-		var url = "../servlet/AdminDataServlet?op=sort_update"+"&&old_sort="+temp+"&&new_sort="+input.value ;
-		sendURL(url);								
-	}
-}
-
-
-/**
- * 删除tag
- * @param hod
- * @param tag
- */
-function delet_tag(hod,tag){
-
-	var input = findInputInClass("tags",tag);	
-	//remove 视图
-	var recorder = input.parentNode;
-	var recorder_parent = recorder.parentNode;
-	recorder_parent.removeChild(recorder);
-	
-	//后台删除
-	var url = "../servlet/AdminDataServlet?op=tag_delete"+"&&tag="+tag;
-	sendURL(url)	
-}
-
-
-/**
- * hod 点击的span参数
- * tag  标签名字
- * @param hod
- * @param sort
- */
-
-var input_t; //保存input
-var temp_t;//保存input的上一个值
-function edit_tag(hod,tag){
-	
-	if(hod.innerHTML == "编辑"){
-	
-		input_t = findInputInClass("tags",tag);		
-		//保存input的原始值
-		temp_t = input_t.value;					
-		//允许input可以进行编辑
-		input_t.removeAttribute("disabled");			
-		
-		//实现input的光标定位
-		input_t.value="";	
-		input_t.focus();
-		input_t.value=temp_t;					
-		//修改hod内容为保存		
-		hod.innerHTML="保存";			
-	}else{		
-		//点击了保存
-		hod.innerHTML="编辑";	
-		input_t.setAttribute("disabled","disabled");
-		
-		//提交修改请求
-		var url = "../servlet/AdminDataServlet?op=tag_update"+"&&old_tag="+temp_t+"&&new_tag="+input_t.value ;
-		sendURL(url);								
-	}
 }
