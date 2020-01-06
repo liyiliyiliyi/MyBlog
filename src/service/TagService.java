@@ -89,4 +89,9 @@ public class TagService {
     public List getTagById(String id){
         return dao.getTagByColumn("article_id", id);
     }
+
+    public int getTagCounts() {
+        List list = dao.getAllTag();
+        return list.size();
+    }
 }
