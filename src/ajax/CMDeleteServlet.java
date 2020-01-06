@@ -16,6 +16,7 @@ public class CMDeleteServlet extends HttpServlet {
 
         //获得要删除评论的ip
         String id = request.getParameter("id");
+
         //返回的数据
         JSONObject jo = new JSONObject();
         CommentService cs = CommentService.getInstance();
