@@ -21,6 +21,38 @@
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/mchange-commons-java-0.2.11.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-8.0.18.jar" />
           <element id="library" level="project" name="mysql-connector-java-8.0.18" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/el-api.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/jasper.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/jsp-api.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/catalina.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/ecj-4.13.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/jasper-el.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/jaspic-api.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-api.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-jni.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/catalina-ha.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/servlet-api.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-dbcp.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-jdbc.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-util.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/catalina-ant.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/catalina-ssi.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-coyote.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/websocket-api.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-i18n-cs.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-i18n-de.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-i18n-es.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-i18n-fr.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-i18n-ja.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-i18n-ko.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-i18n-ru.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/annotations-api.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/catalina-tribes.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-util-scan.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-websocket.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-i18n-pt-BR.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/tomcat-i18n-zh-CN.jar" />
+          <element id="file-copy" path="D:/Program Files/apache-tomcat-9.0.30/lib/catalina-storeconfig.jar" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="MyBlog/web/Web" />

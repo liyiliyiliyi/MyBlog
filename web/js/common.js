@@ -20,33 +20,35 @@ function ajaxObject() {
 }
 
 // ajax post请求：
-function ajaxPost ( url , data , fnSucceed , fnFail , fnLoading ) {
+function ajaxSend (url, method, data, fnSucceed, fnFail, fnLoading) {
     var ajax = ajaxObject();
-    ajax.open( "post" , url , true );
+    ajax.open(method ,url ,true);
     ajax.setRequestHeader( "Content-Type" , "application/x-www-form-urlencoded" );
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {
                  fnSucceed( ajax.responseText );
-                // console.log(ajax.responseText);
             }
             else {
                  fnFail( "HTTP请求错误！错误码："+ajax.status );
                 // console.log("HTTP请求错误！错误码："+ajax.status);
             }
         } else {
-            // fnLoading();
+            fnLoading();
         }
     }
     ajax.send(data);
 }
-
+function consoleFun(res) {
+    console.log(res);
+}
+function emptyFun() {}
 
 /**
  * 获取日志分类标签数据
  */
 function getAST() {
-    ajaxPost("/MyBlog/servlet/AskCountsServlet", "", getAST_Success, getAST_Fail);
+    ajaxSend("/MyBlog/servlet/AskCountsServlet", "POST" , "", getAST_Success, consoleFun, emptyFun);
 }
 function getAST_Success(res) {
     var tag_count = document.getElementById("tag-count");
