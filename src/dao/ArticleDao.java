@@ -279,14 +279,55 @@ public class ArticleDao implements IArticleDao {
     }
 
 
+    /**
+     *向article表中通过查询visit获得阅读排行
+     * @return
+     */
     @Override
     public List getVisitRank() {
-        return null;
+        List<Article> list = new ArrayList<Article>();
+        String sql = "SELECT * FROM article ORDER BY visit DESC";
+        PreparedStatement pstatement;
+
+        try {
+            pstatement = DBUtils.getStatement(sql);
+            ResultSet rs = pstatement.executeQuery();
+            while ((rs.next())) {
+                Article article = new Article(rs.getInt("article_id"), rs.getString("title"), rs.getString("author"),
+                        rs.getString("sort"), rs.getString("time"), rs.getInt("star"), rs.getInt("comment"),
+                        rs.getInt("visit"), rs.getString("content"));
+                list.add(article);
+            }
+            DBUtils.Close(pstatement, rs, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override
     public int getCount(String search_key) {
-        return 1;
+        String sql;
+        int count = 0;
+        PreparedStatement pstatement;
+        if(search_key.equals(SEARCH_ARTICLE)) {
+            sql = "SELECT COUNT(id) FROM article";
+        } else {
+            sql = "SELECT COUNT(DISTINCT(sort)) FROM article";
+        }
+
+        try {
+            pstatement = DBUtils.getStatement(sql);
+            ResultSet rs = pstatement.executeQuery();
+            if(rs.next()) {
+                count = rs.getInt(1);
+            }
+            DBUtils.Close(pstatement,rs,null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return count;
     }
 
 
