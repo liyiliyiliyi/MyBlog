@@ -17,9 +17,10 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        //将请求转到该方法处理
-        LoginUtils.login(request);
 
+        if(LoginUtils.login(request) == false){
+            request.getRequestDispatcher("login.jsp").forward(request,response);
+        }
         ArticleService as = ArticleService.getInstance();
         TagService ts = TagService.getInstance();
 
@@ -34,14 +35,12 @@ public class LoginServlet extends HttpServlet {
         // 初始化文章列表
         request.setAttribute("article_list",as.getArticle());
 
-        //
-
-
-        //服务端跳转到main.jsp
         request.getRequestDispatcher("pages/main.jsp").forward(request,response);
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request,response);
     }
 }
