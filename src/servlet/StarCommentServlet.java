@@ -55,14 +55,16 @@ public class StarCommentServlet extends HttpServlet {
         if (judge) {
             //发送新的cookie
             cookie = new Cookie("star_cm" + id,  "starOver");
+            jo.put("star", "starSuccess");
             switch (flag) {
                 case 1 :
                     //点过赞
                     diss = cs.dissCounts(Integer.parseInt(id));
                     star = cs.starCounts(Integer.parseInt(id));
+                    jo.put("star", "starFailed");
                     break;
                 case 2 :
-                    //把diss变成点赞
+                    //把diss变成点赞,star+1,diss-1
                     diss = cs.dissComment(Integer.parseInt(id), Comment.DISS);
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
                     break;
@@ -73,17 +75,19 @@ public class StarCommentServlet extends HttpServlet {
 
             }
         }else {
+            jo.put("diss", "dissSuccess");
             //发送新的cookie
             cookie = new Cookie("star_cm" + id,  "dissOver");
             response.addCookie(cookie);
             switch (flag) {
                 case 1:
                     //diss过
+                    jo.put("diss", "dissFailed");
                     diss = cs.dissCounts(Integer.parseInt(id));
                     star = cs.starCounts(Integer.parseInt(id));
                     break;
                 case 2:
-                    //把点赞变成diss
+                    //把点赞变成diss,star-1,diss+1
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
                     diss = cs.dissComment(Integer.parseInt(id), Comment.DISS);
                     break;
@@ -93,8 +97,8 @@ public class StarCommentServlet extends HttpServlet {
                     break;
             }
         }
-        jo.put("star", star);
-        jo.put("diss", diss);
+        jo.put("starcount", star);
+        jo.put("disscount", diss);
         // 设置有效期 15分钟
         cookie.setMaxAge(15 * 60);
         // 设置有效目录
@@ -104,6 +108,7 @@ public class StarCommentServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 
