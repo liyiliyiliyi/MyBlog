@@ -62,8 +62,8 @@ function emptyfun() {}
 function star_or_diss(component, attitude,  comm_id,) {
     switch (attitude) {
         case 0: {
-            break;
             diss(component, comm_id);
+            break;
         }
         case 1: {
             star(component, comm_id);
