@@ -75,10 +75,10 @@ function star_or_diss(component, attitude,  comm_id,) {
 /**
  * 顶评论
  */
-function star(component , comm_id) {
-
-    var url = "/MyBlog/CMStarServlet?id="+comm_id  + "&diss_or_star=star";
-    ajaxSend(url, "post", ", ")
+function star(com , comm_id) {
+    component = com;
+    var url = "/MyBlog/StarCommentServlet?id="+comm_id  + "&diss_or_star=star";
+    ajaxSend(url, "post", "", starCallback, consoleFun, emptyfun);
     // 获取ajax
     // var xmlhttp = getXHR();
     // xmlhttp.onreadystatechange = function() {
@@ -102,34 +102,47 @@ function star(component , comm_id) {
 /**
  * 踩评论
  */
-function diss(component , comm_id) {
-
-    var url = "/MyBlog/CMDissServlet?id="+comm_id + "&diss_or_star=diss";
-    // 获取ajax
-    var xmlhttp = getXHR();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            // 处理服务器收到的请求响应
-            var res = xmlhttp.responseText;
-            // 解析json对象
-            var res = eval('(' + res + ')');
-            if (res.msg == "success") {
-                //返回 ”success“
-                component.innerHTML = res.new_diss;
-            }else{
-                alert("不要狂点呀...");
-            }
-        }
-    }
-    xmlhttp.open("POST", url, true);
-    xmlhttp.send();
+function diss(com , comm_id) {
+    component = com;
+    var url = "/MyBlog/StarCommentServlet?id="+comm_id + "&diss_or_star=diss";
+    ajaxSend(url, "post", "", dissCallback, consoleFun, emptyfun());
+    // // 获取ajax
+    // var xmlhttp = getXHR();
+    // xmlhttp.onreadystatechange = function() {
+    //     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    //         // 处理服务器收到的请求响应
+    //         var res = xmlhttp.responseText;
+    //         // 解析json对象
+    //         var res = eval('(' + res + ')');
+    //         if (res.msg == "success") {
+    //             //返回 ”success“
+    //             component.innerHTML = res.new_diss;
+    //         }else{
+    //             alert("不要狂点呀...");
+    //         }
+    //     }
+    // }
+    // xmlhttp.open("POST", url, true);
+    // xmlhttp.send();
 }
-function starSuccess(result) {
+function starCallback(result) {
+    console.log(result);
     // 解析json对象
     var res = eval('(' + result + ')');
-    if (res.msg == "success") {
-        //返回 ”success“
-        component.innerHTML = result;
+    if (res.star == "starSuccess") {
+        //返回 "success"
+        component.innerHTML = res.starcount;
+    }else{
+        alert("不要狂点呀...");
+    }
+}
+function dissCallback(result) {
+    console.log(result);
+    // 解析json对象
+    var res = eval('(' + result + ')');
+    if (res.diss == "dissSuccess") {
+        //返回 "success"
+        component.innerHTML = res.disscount;
     }else{
         alert("不要狂点呀...");
     }
