@@ -50,7 +50,7 @@
 				<div id="msg-div" class="row">
 					<input type="hidden" name="time" value="">
 					<div class="col-md-3 input-group message-group">
-						<span class="input-group-addon">作者</span><input class="message-input form-control" name="author" placeholder="作者" type="text" id="author" disabled value="<%=((User)request.getSession().getAttribute("user")).getUser_name()%>"></input>
+						<span class="input-group-addon">作者</span><input class="message-input form-control" name="author" placeholder="作者" type="text" id="author" readonly value="<%=((User)request.getSession().getAttribute("user")).getUser_name()%>"></input>
 					</div>
 					<div class="col-md-3 input-group message-group">
 						<span class="input-group-addon">分类</span><input class="message-input form-control" required placeholder="请输入分类" type="text" name="sort">

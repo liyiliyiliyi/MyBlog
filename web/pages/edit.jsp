@@ -49,10 +49,10 @@
 				<div id="msg-div" class="row">
 					<input type="hidden" name="time" value="">
 					<div class="col-md-2 input-group message-group">
-						<span class="input-group-addon">作者</span><input class="message-input form-control" placeholder="${edit_article.author}" type="text" name="author" id="author" disabled value="${edit_article.author}"></input>
+						<span class="input-group-addon">作者</span><input class="message-input form-control" placeholder="${edit_article.author}" type="text" name="author" id="author" readonly value="${edit_article.author}"></input>
 					</div>
                     <div class="col-md-3 input-group message-group">
-                        <span class="input-group-addon">时间</span><input class="message-input form-control" placeholder="${edit_article.time}" type="text" id="time" name="time" disabled value="${edit_article.time}"></input>
+                        <span class="input-group-addon">时间</span><input class="message-input form-control" placeholder="${edit_article.time}" type="text" id="time" name="time" readonly value="${edit_article.time}"></input>
                     </div>
 					<div class="col-md-2 input-group message-group">
 						<span class="input-group-addon">分类</span><input class="message-input form-control" required placeholder="请输入分类" type="text" name="sort" value="${edit_article.sort}">

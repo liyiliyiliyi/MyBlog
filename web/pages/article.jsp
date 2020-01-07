@@ -208,9 +208,9 @@ ${article.content}
 								<pre class="text-muted comment-content">${comm.content }</pre>
 							</div>
 							<div class="">
-								<a class="like-dislike"><span class="glyphicon glyphicon-thumbs-up"  onclick="star(this,${comm.id})"> ${comm.star}</span></a>
+								<a class="like-dislike"><span class="glyphicon glyphicon-thumbs-up"  onclick="star_or_diss(this, 1, ${comm.id})">${comm.star}</span></a>
 								&nbsp;
-								<a class="like-dislike"><span class="glyphicon glyphicon-thumbs-down" onclick="diss(this,${comm.id})"> ${comm.diss}</span></a>
+								<a class="like-dislike"><span class="glyphicon glyphicon-thumbs-down" onclick="star_or_diss(this, 0, ${comm.id})">${comm.diss}</span></a>
 								&nbsp;
 								<!-- 管理员删除按钮 -->
 								<c:if test="${sessionScope.user!=null}">

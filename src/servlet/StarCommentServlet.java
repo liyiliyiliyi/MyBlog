@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "StarCommentServlet")
+@WebServlet("servlet/StarCommentServlet")
 public class StarCommentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //获取评论id
@@ -51,47 +51,62 @@ public class StarCommentServlet extends HttpServlet {
         }
 
         //要点赞
+        Cookie cookie;
         if (judge) {
+            //发送新的cookie
+            cookie = new Cookie("star_cm" + id,  "starOver");
+
             switch (flag) {
                 case 1 :
                     //点过赞
                     diss = cs.dissCounts(Integer.parseInt(id));
                     star = cs.starCounts(Integer.parseInt(id));
+                    jo.put("star", "starFailed");
                     break;
                 case 2 :
-                    //把diss变成点赞
+                    //把diss变成点赞,star+1,diss-1
                     diss = cs.dissComment(Integer.parseInt(id), Comment.DISS);
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
+                    jo.put("star", "starSuccess");
                     break;
-                case 3 :
+                case 0 :
                     //点赞
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
+                    jo.put("star", "starSuccess");
+                    break;
+                default:
                     break;
 
             }
         }else {
+
+            //发送新的cookie
+            cookie = new Cookie("star_cm" + id,  "dissOver");
+            response.addCookie(cookie);
             switch (flag) {
                 case 1:
                     //diss过
+                    jo.put("diss", "dissFailed");
                     diss = cs.dissCounts(Integer.parseInt(id));
                     star = cs.starCounts(Integer.parseInt(id));
                     break;
                 case 2:
-                    //把点赞变成diss
+                    //把点赞变成diss,star-1,diss+1
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
                     diss = cs.dissComment(Integer.parseInt(id), Comment.DISS);
+                    jo.put("diss", "dissSuccess");
                     break;
-                case 3:
+                case 0:
                     //diss
+                    jo.put("diss", "dissSuccess");
                     diss = cs.starComment(Integer.parseInt(id), Comment.DISS);
                     break;
+                    default:
+                        break;
             }
         }
-        jo.put("star", star);
-        jo.put("diss", diss);
-        //发送新的cookie
-        Cookie cookie = new Cookie("star_cm" + id,  "starOver");
-        response.addCookie(cookie);
+        jo.put("starcount", star);
+        jo.put("disscount", diss);
         // 设置有效期 15分钟
         cookie.setMaxAge(15 * 60);
         // 设置有效目录
@@ -101,6 +116,8 @@ public class StarCommentServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        doPost(request, response);
 
     }
 
