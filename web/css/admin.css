@@ -1,18 +1,44 @@
-@charset "UTF-8";
-
-.admin_div{
-	margin-top:20px;
-	margin-bottom:20px;
-	padding-top:30px;
-	padding-bottom:30px;
+.right-content {
+	margin-top:15px;
 }
 
-button{
-	border:0px;
-	
+.article-time {
+	margin-right: 15px;
 }
 
-
-input[ disabled ]{
-	background-color:white;	
+.inline-div {
+	display: inline;
+}
+.f-left {
+	float: left;
+	margin-top: 5px;
+}
+.f-right {
+	float: right;
+}
+.btn-default {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid #ddd;
+	border-radius: 4px;
 }

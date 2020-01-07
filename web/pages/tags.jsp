@@ -24,9 +24,6 @@
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<!-- preview的css -->
-	<link rel="stylesheet" href="/MyBlog/pages/editormd/css/editormd.preview.min.css" />
-
 	<!--引入当前页面js及css-->
 	<script src="/MyBlog/js/common.js"></script>
 	<script src="/MyBlog/js/article.js"></script>
