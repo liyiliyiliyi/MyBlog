@@ -55,7 +55,7 @@ public class StarCommentServlet extends HttpServlet {
         if (judge) {
             //发送新的cookie
             cookie = new Cookie("star_cm" + id,  "starOver");
-            jo.put("star", "starSuccess");
+
             switch (flag) {
                 case 1 :
                     //点过赞
@@ -67,15 +67,17 @@ public class StarCommentServlet extends HttpServlet {
                     //把diss变成点赞,star+1,diss-1
                     diss = cs.dissComment(Integer.parseInt(id), Comment.DISS);
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
+                    jo.put("star", "starSuccess");
                     break;
                 case 3 :
                     //点赞
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
+                    jo.put("star", "starSuccess");
                     break;
 
             }
         }else {
-            jo.put("diss", "dissSuccess");
+
             //发送新的cookie
             cookie = new Cookie("star_cm" + id,  "dissOver");
             response.addCookie(cookie);
@@ -90,9 +92,11 @@ public class StarCommentServlet extends HttpServlet {
                     //把点赞变成diss,star-1,diss+1
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
                     diss = cs.dissComment(Integer.parseInt(id), Comment.DISS);
+                    jo.put("diss", "dissSuccess");
                     break;
                 case 3:
                     //diss
+                    jo.put("diss", "dissSuccess");
                     diss = cs.starComment(Integer.parseInt(id), Comment.DISS);
                     break;
             }
