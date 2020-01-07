@@ -6,7 +6,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter(filterName = "RankFilter")
+//@WebFilter(filterName = "RankFilter")
 public class RankFilter implements Filter {
     public void destroy() {
     }
