@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "StarCommentServlet")
+@WebServlet("servlet/StarCommentServlet")
 public class StarCommentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //获取评论id
@@ -69,10 +69,12 @@ public class StarCommentServlet extends HttpServlet {
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
                     jo.put("star", "starSuccess");
                     break;
-                case 3 :
+                case 0 :
                     //点赞
                     star = cs.starComment(Integer.parseInt(id), Comment.STAR);
                     jo.put("star", "starSuccess");
+                    break;
+                default:
                     break;
 
             }
@@ -94,11 +96,13 @@ public class StarCommentServlet extends HttpServlet {
                     diss = cs.dissComment(Integer.parseInt(id), Comment.DISS);
                     jo.put("diss", "dissSuccess");
                     break;
-                case 3:
+                case 0:
                     //diss
                     jo.put("diss", "dissSuccess");
                     diss = cs.starComment(Integer.parseInt(id), Comment.DISS);
                     break;
+                    default:
+                        break;
             }
         }
         jo.put("starcount", star);
@@ -113,6 +117,7 @@ public class StarCommentServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        doPost(request, response);
 
     }
 
