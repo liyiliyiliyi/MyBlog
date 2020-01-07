@@ -51,7 +51,10 @@ public class StarCommentServlet extends HttpServlet {
         }
 
         //要点赞
+        Cookie cookie;
         if (judge) {
+            //发送新的cookie
+            cookie = new Cookie("star_cm" + id,  "starOver");
             switch (flag) {
                 case 1 :
                     //点过赞
@@ -70,6 +73,9 @@ public class StarCommentServlet extends HttpServlet {
 
             }
         }else {
+            //发送新的cookie
+            cookie = new Cookie("star_cm" + id,  "dissOver");
+            response.addCookie(cookie);
             switch (flag) {
                 case 1:
                     //diss过
@@ -89,9 +95,6 @@ public class StarCommentServlet extends HttpServlet {
         }
         jo.put("star", star);
         jo.put("diss", diss);
-        //发送新的cookie
-        Cookie cookie = new Cookie("star_cm" + id,  "starOver");
-        response.addCookie(cookie);
         // 设置有效期 15分钟
         cookie.setMaxAge(15 * 60);
         // 设置有效目录
