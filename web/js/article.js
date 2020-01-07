@@ -1,4 +1,5 @@
 var container; // 要删除的评论的节点
+var component; // 踩或顶的节点
 /*
 * 获取ajax处理对象
  * @returns {xmlhttp}
@@ -128,7 +129,7 @@ function starSuccess(result) {
     var res = eval('(' + result + ')');
     if (res.msg == "success") {
         //返回 ”success“
-        component.innerHTML = res.new_star;
+        component.innerHTML = result;
     }else{
         alert("不要狂点呀...");
     }
