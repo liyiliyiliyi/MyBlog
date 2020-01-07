@@ -24,7 +24,7 @@
 
 	<!--引入当前页面js及css-->
 	<script src="/MyBlog/js/common.js"></script>
-	<script src="/MyBlog/js/article.js"></script>
+	<script src="/MyBlog/js/admin.js"></script>
 	<link rel="stylesheet" href="/MyBlog/css/buttons.css">
 	<link rel="stylesheet" href="/MyBlog/css/common.css">
 	<link rel="stylesheet" href="/MyBlog/css/admin.css">
@@ -133,7 +133,8 @@
 									<button class="btn btn-default">&nbsp;<span class="glyphicon glyphicon-pencil" style="color:#5bc0de" >编辑</span>&nbsp;</button>
 								</a>
 								<button class="btn btn-default">&nbsp;
-									<span class="glyphicon glyphicon-trash" style="color:#d9534f" onclick="delete_article(this,'${a.id}')"> 删除</span>&nbsp;</button>
+									<span class="glyphicon glyphicon-trash" style="color:#d9534f" onclick="delete_article(this,'${a.id}')"> 删除</span>&nbsp;
+								</button>
 
 							</div>
 						</div>
