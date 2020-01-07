@@ -66,48 +66,9 @@ public class CommentDao implements ICommentDao {
 
     @Override
     public boolean deleteComment(int comment_id) {
-
-        PreparedStatement ps;
-        String sql = "DELETE FROM comment WHERE c_id=" + comment_id;
-        int result = 0;
-
-        article_sub_comemnt(comment_id);
-        try {
-            ps = DBUtils.getStatement(sql);
-            result = ps.executeUpdate();
-
-            DBUtils.Close(ps,null,null);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if(result > 0) {
-            return true;
-        }
         return false;
     }
 
-    /**
-     * 删除评论后文章记录的评论减1
-     * @param comment_id
-     */
-    private void article_sub_comemnt(int comment_id){
-    PreparedStatement ps;
-    String sql = "SELECT article_id FROM comment WHERE id =" + comment_id;
-        try {
-            ps = DBUtils.getStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            int article_id = 0;
-            if(rs.next()) {
-                article_id = rs.getInt("article_id");
-            }
-            sql = "UPDATE article SET COMMENT=COMMENT - 1 WHERE id=" + article_id;
-            ps = DBUtils.getStatement(sql);
-            ps.executeUpdate();
-            DBUtils.Close(ps,rs,null);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public List getComment(int article_id) {
         String sql = "SELECT * FROM comment WHERE article_id=? ORDER BY TIME";
@@ -137,8 +98,82 @@ public class CommentDao implements ICommentDao {
         return list;
     }
 
+    //star+1,diss-1,返回star 或者 diss值
     @Override
     public int star_diss(int id, int star_or_diss) {
-        return 0;
+        String sql;
+
+        int result = -1;
+
+        if (star_or_diss == Comment.STAR) {
+            sql = "update comment set star=star+1 where c_id=" + id;
+        } else if (star_or_diss == Comment.DISS) {
+            sql = "update comment set diss=diss+1 where c_id=" + id;
+        } else {
+            return -1;
+        }
+
+        try {
+            PreparedStatement ps = DBUtils.getStatement(sql);
+            ps.executeUpdate();
+            // DBUtils.Close(conn, ps);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (star_or_diss == Comment.STAR) {
+            sql = "SELECT star FROM comment WHERE c_id = " + id;
+        } else if (star_or_diss == Comment.DISS) {
+            sql = "SELECT diss FROM comment WHERE c_id = " + id;
+        }
+
+        try {
+            PreparedStatement ps = DBUtils.getStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                result = rs.getInt(1);
+            }
+
+            DBUtils.Close(ps, rs, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public int starCounts(int id) {
+        String sql = "SELECT star FROM comment WHERE c_id = " + id;
+        int counts = 0;
+        try {
+            PreparedStatement ps = DBUtils.getStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                counts = rs.getInt(1);
+            }
+
+            DBUtils.Close(ps, rs, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return counts;
+
+    }
+    public int dissCounts(int id) {
+
+        String sql = "SELECT diss FROM comment WHERE c_id = " + id;
+        int counts = 0;
+        try {
+            PreparedStatement ps = DBUtils.getStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                counts = rs.getInt(1);
+            }
+
+            DBUtils.Close(ps, rs, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return counts;
+
     }
 }

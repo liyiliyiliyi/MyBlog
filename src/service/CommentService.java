@@ -41,4 +41,23 @@ public class CommentService {
     public boolean deleteComment(int id) {
         return idao.deleteComment(id);
     }
+
+    //点赞
+    public  int starComment(int id, int flag) {
+        return idao.star_diss(id, Comment.STAR);
+    }
+    //diss
+    public  int dissComment(int id, int flag) {
+       return  idao.star_diss(id, Comment.DISS);
+    }
+    //返回点赞数
+    public int starCounts(int id) {
+        return idao.starCounts(id);
+    }
+    //返回diss数
+    public int dissCounts(int id) {
+        return idao.starCounts(id);
+    }
+
+
 }

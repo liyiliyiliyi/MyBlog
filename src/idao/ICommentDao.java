@@ -34,4 +34,8 @@ public interface ICommentDao {
      * @return
      */
     int star_diss(int id, int star_or_diss);
+
+    int starCounts(int id);
+
+    int dissCounts(int id);
 }

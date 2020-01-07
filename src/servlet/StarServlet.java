@@ -48,7 +48,6 @@ public class StarServlet extends HttpServlet {
         }
         // 写回ajax
         response.getWriter().println(jo);
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
