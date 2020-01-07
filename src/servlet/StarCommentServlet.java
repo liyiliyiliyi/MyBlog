@@ -55,7 +55,7 @@ public class StarCommentServlet extends HttpServlet {
         if (judge) {
             //发送新的cookie
             cookie = new Cookie("star_cm" + id,  "starOver");
-
+            response.addCookie(cookie);
             switch (flag) {
                 case 1 :
                     //点过赞

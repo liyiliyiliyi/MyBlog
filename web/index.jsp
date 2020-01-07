@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>MyBlog</title>
   </head>
   <body>
-  $END$
+  <script>
+    window.location = "/MyBlog/login.jsp";
+  </script>
   </body>
 </html>

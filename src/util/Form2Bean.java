@@ -63,7 +63,7 @@ public class Form2Bean {
 		value.put("title", request.getParameter("title"));
 		value.put("time", time);
 		//测试作者---登录注册完成要更改
-		value.put("author", "ganyurou");
+		value.put("author", request.getParameter("author"));
 		value.put("sort", request.getParameter("sort"));
 		value.put("content", request.getParameter("editormd-markdown-doc"));
 		value.put("star", 0);
