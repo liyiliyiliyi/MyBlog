@@ -168,19 +168,18 @@
 
 							<br/>
 							<div class="text-muted title-msg-div text-center">
-                <span class="title-msg">
-                  <span class="glyphicon glyphicon-calendar"></span>发表于:&nbsp;<span>${article.time}</span>
-                </span>
 								<span class="title-msg">
-                  <a href="/MyBlog/SortServlet?get=${article.sort}">
-                    <span class="glyphicon glyphicon-list"></span>
-                    &nbsp;分类:&nbsp;<span>${article.sort}</span>
-                  </a>
-                </span>
+								  <span class="glyphicon glyphicon-calendar"></span>发表于:&nbsp;<span>${article.time}</span>
+								</span>
 								<span class="title-msg">
-                  <span class="glyphicon glyphicon-eye-open"></span>
-                  阅读次数:<span>${article.visit}</span>
-                </span>
+                  					<a href="/MyBlog/SortServlet?get=${article.sort}">
+										<span class="glyphicon glyphicon-list"></span>
+										&nbsp;分类:&nbsp;<span>${article.sort}</span>
+                  					</a>
+                				</span>
+								<span class="title-msg">
+									<span class="glyphicon glyphicon-eye-open"></span>阅读次数:<span>${article.visit}</span>
+                				</span>
 							</div>
 							<br/><br/>
 							<div class="text-center">

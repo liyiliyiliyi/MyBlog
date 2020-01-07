@@ -58,30 +58,44 @@ function deleteCommentCallback(result) {
 }
 function emptyfun() {}
 
+function star_or_diss(component, attitude,  comm_id,) {
+    switch (attitude) {
+        case 0: {
+            break;
+            diss(component, comm_id);
+        }
+        case 1: {
+            star(component, comm_id);
+            break;
+        }
+    }
+}
+
 /**
  * 顶评论
  */
 function star(component , comm_id) {
 
-    var url = "/MyBlog/CMStarServlet?id="+comm_id ;
+    var url = "/MyBlog/CMStarServlet?id="+comm_id  + "&diss_or_star=star";
+    ajaxSend(url, "post", ", ")
     // 获取ajax
-    var xmlhttp = getXHR();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            // 处理服务器收到的请求响应
-            var res = xmlhttp.responseText;
-            // 解析json对象
-            var res = eval('(' + res + ')');
-            if (res.msg == "success") {
-                //返回 ”success“
-                component.innerHTML = res.new_star;
-            }else{
-                alert("不要狂点呀...");
-            }
-        }
-    }
-    xmlhttp.open("POST", url, true);
-    xmlhttp.send();
+    // var xmlhttp = getXHR();
+    // xmlhttp.onreadystatechange = function() {
+    //     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    //         // 处理服务器收到的请求响应
+    //         var res = xmlhttp.responseText;
+    //         // 解析json对象
+    //         var res = eval('(' + res + ')');
+    //         if (res.msg == "success") {
+    //             //返回 ”success“
+    //             component.innerHTML = res.new_star;
+    //         }else{
+    //             alert("不要狂点呀...");
+    //         }
+    //     }
+    // }
+    // xmlhttp.open("POST", url, true);
+    // xmlhttp.send();
 }
 
 /**
@@ -89,7 +103,7 @@ function star(component , comm_id) {
  */
 function diss(component , comm_id) {
 
-    var url = "/MyBlog/CMDissServlet?id="+comm_id;
+    var url = "/MyBlog/CMDissServlet?id="+comm_id + "&diss_or_star=diss";
     // 获取ajax
     var xmlhttp = getXHR();
     xmlhttp.onreadystatechange = function() {
@@ -108,4 +122,14 @@ function diss(component , comm_id) {
     }
     xmlhttp.open("POST", url, true);
     xmlhttp.send();
+}
+function starSuccess(result) {
+    // 解析json对象
+    var res = eval('(' + result + ')');
+    if (res.msg == "success") {
+        //返回 ”success“
+        component.innerHTML = res.new_star;
+    }else{
+        alert("不要狂点呀...");
+    }
 }
