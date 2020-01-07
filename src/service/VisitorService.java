@@ -39,7 +39,7 @@ public class VisitorService {
      */
     public static int totalVisit() {
         int result = 0;
-        String sql = "select count(id) from visitor";
+        String sql = "select count(v_id) from visitor";
         try {
             PreparedStatement ps = DBUtils.getStatement(sql);
             ResultSet rs = ps.executeQuery();

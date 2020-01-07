@@ -4,27 +4,20 @@ import service.ArticleService;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ArticleFilter implements Filter {
+@WebFilter(filterName = "RankFilter")
+public class RankFilter implements Filter {
     public void destroy() {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
 
-        HttpServletRequest rq = (HttpServletRequest)req;
-        HttpServletResponse rp = (HttpServletResponse)resp;
-
-        // 点开文章自动增加浏览次数
-        String id = rq.getParameter("id");
         ArticleService as = ArticleService.getInstance();
-        as.addVisit(Integer.valueOf(id));
-
+        //显示阅读排行
+        req.setAttribute("visit_rank",as.getVisitRank());
 
         chain.doFilter(req, resp);
-
     }
 
     public void init(FilterConfig config) throws ServletException {

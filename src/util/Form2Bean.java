@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import model.Comment;
 import model.Tag;
+import model.User;
 import org.apache.commons.beanutils.BeanUtils;
 
 import model.Article;
@@ -50,6 +51,7 @@ public class Form2Bean {
 
 	public static Article articleForm2Bean(HttpServletRequest request) throws FailException {
 
+		System.out.println(request.getParameter("author"));
 		//将界面取得数据放到value中
 		Map value = new HashMap();
 
@@ -62,8 +64,8 @@ public class Form2Bean {
 
 		value.put("title", request.getParameter("title"));
 		value.put("time", time);
-		//测试作者---登录注册完成要更改
-		value.put("author", "ganyurou");
+		//作者的值
+		value.put("author",request.getParameter("author"));
 		value.put("sort", request.getParameter("sort"));
 		value.put("content", request.getParameter("editormd-markdown-doc"));
 		value.put("star", 0);

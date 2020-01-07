@@ -29,11 +29,12 @@ public class MainFilter implements Filter {
         rq.setAttribute("sort_number", as.getCount(IArticleDao.SEARCH_SORT));
         rq.setAttribute("tags_number",ts.getTagCounts());
 
-        // 阅读排行
-        rq.setAttribute("visit_rank",as.getVisitRank());
+
 
         // 初始化文章列表
         rq.setAttribute("article_list",as.getArticle());
+
+
 
         chain.doFilter(req, resp);
     }
