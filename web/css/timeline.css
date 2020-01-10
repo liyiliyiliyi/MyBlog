@@ -1,37 +1,38 @@
-@charset "UTF-8";
-
-.longline_div{			
-	width:100%;
-	height:80px;
-	border-left: solid #555 4px;	
-	clear:both;
-	margin-bottom:30px;
-	margin-top:30px;
-	padding:15px;
-	overflow:hidden;
-}	
-.line_div{
-	width:100%;
-	height:50px;
-	border-left: solid #555 4px;	
-	clear:both;
-	margin-bottom:10px;
-	margin-top:10px;
-	padding:15px;
-	overflow:hidden;
+.line {
+	width: 8px;
+	border: 0px;
+	margin: 0px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background: #65AB30;
 }
-
-.line_div div{	
-	width:100%;
-	height:100%;
-	float:left;	
-	text-align:left;
-	margin-left:30px;
+.timeline-year-btn {
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	font-size: 30px;
+	position: relative;
+	left: -15px;
+	background: #85BB3C;
 }
-
-.longline_div div{
-	float:left;
-	margin-left:20px;
-	font-size:x-large;
-	color: #222;
+.line.timeline-year-btn :hover {
+	background: #65AB30;
+}
+.timeline-content-btn {
+	padding: 0px;
+	margin: 0px;
+	width: 22px;
+	height: 22px;
+	border: 3px solid #85BB3C;
+	border-radius: 11px;
+	position: relative;
+	left: -6px;
+	background: #fff;
+}
+#timeline {
+	margin-left: 30%;
+	margin-bottom: 15px;
+}
+.last-line {
+	border-radius: 0px 0px 4px 4px;
 }

@@ -89,7 +89,7 @@
 
 					</li>
 					<li>
-						<a href="/MyBlog/pages/about.html"><span class="glyphicon glyphicon-info-sign"></span>
+						<a href="/MyBlog/pages/about.jsp"><span class="glyphicon glyphicon-info-sign"></span>
 							&nbsp;&nbsp;关于</a>
 					</li>
 				</ul>

@@ -54,3 +54,28 @@ function check_repeat() {
         warning_repat.innerHTML = "";
     }
 }
+//
+// //提供jsonp服务的url地址 (不管是什么类型的地址，最终生成的返回值都是一段javascript代码)
+// //var url = "http://localhost:80/test/jsonp.php";  //  这个路径不是在本地直接打开的文件路径（不能放到服务器里面，也就是www目录下面）
+// var callback = function(data) {
+//     console.log("请求返回的数据",data);
+// }
+//
+// //这里封装了一个函数 可以多次调用
+// /*
+//     url参数就是请求的地址
+//     callback是我们获取返回数据的回到函数
+// */
+// function ajaxJSONP(url,callback){
+//     var script = document.createElement("script");
+//     script.setAttribute("src",url+"?callback="+callback);
+//     console.log(script);
+//     document.getElementsByTagName("body")[0].appendChild(script);
+// }
+//
+// function loadBgImg() {
+//     var url = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
+//     ajaxJSONP(url, callback)
+// }
+//
+// window.onload = loadBgImg();
