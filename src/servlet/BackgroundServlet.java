@@ -20,6 +20,7 @@ public class BackgroundServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String resUrl = UseGet.ImgUrl(request);
 
+        //跳转
         response.getWriter().write(resUrl);
 
 

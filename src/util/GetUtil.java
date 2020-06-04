@@ -29,7 +29,7 @@ public class GetUtil {
             System.out.println("发送GET请求出现异常！" + e);
             e.printStackTrace();
         }
-        // 使用finally块来关闭输入流
+        //关闭输入流
         finally {
             try {
                 if (in != null) {

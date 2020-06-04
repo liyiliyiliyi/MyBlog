@@ -15,6 +15,7 @@ public class UseGet {
             String jsonstr = GetUtil.sendGet("https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1");
             //java转json
             JSONObject jsonobj = JSONObject.fromObject(jsonstr);
+            //获得第一个数组
             JSONArray images = jsonobj.getJSONArray("images");
             resUrl = images.getJSONObject(0).getString("url");
             //真正的图片地址
