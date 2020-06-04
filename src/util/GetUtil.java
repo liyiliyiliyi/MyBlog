@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class GetUtil {
+
     public static String sendGet(String urlstr) {
         StringBuffer result = new StringBuffer();
         BufferedReader in = null;

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 public class UseGet {
 
     public static String ImgUrl(HttpServletRequest request) {
+
         String resUrl = "";
         try {
             //通过get访问方式，得到相对应的json数据
