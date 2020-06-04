@@ -13,6 +13,7 @@ public class UseGet {
         try {
             //通过get访问方式，得到相对应的json数据
             String jsonstr = GetUtil.sendGet("https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1");
+            //java转json
             JSONObject jsonobj = JSONObject.fromObject(jsonstr);
             JSONArray images = jsonobj.getJSONArray("images");
             resUrl = images.getJSONObject(0).getString("url");
