@@ -20,8 +20,6 @@ public class SortServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
-        System.out.println("test");
         // 获取的是所有（all）分类 也可以是一个分类的文章
         String get = StringUtils.pareCode(request.getParameter("get"));
         // 初始化分类和和文章
