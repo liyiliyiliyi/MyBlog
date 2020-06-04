@@ -1,9 +1,9 @@
 package servlet;
 
-import dao.ArticleDao;
-import dao.TagDao;
+import model.User;
 import service.ArticleService;
 import service.TagService;
+import util.LoginUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/servlet/AskCountsServlet")
 public class AskCountsServlet extends HttpServlet {

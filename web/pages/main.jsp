@@ -1,3 +1,4 @@
+<%@ page import="model.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
@@ -59,7 +60,7 @@
 				<div class="text-center" id="person_info">
 					<img class="img-circle center-block" src="/MyBlog/images/header.jpg" height="130" width="130"
 						 alt="丢失了我的头像?" class="img-circle">
-					<h3>name</h3>
+
 				</div>
 				<div class="row text-center blog-message">
 					<a href="/MyBlog/pages/main.jsp">

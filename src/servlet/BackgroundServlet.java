@@ -22,5 +22,6 @@ public class BackgroundServlet extends HttpServlet {
 
         response.getWriter().write(resUrl);
 
+
     }
 }
