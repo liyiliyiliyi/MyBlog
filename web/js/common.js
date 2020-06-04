@@ -1,3 +1,13 @@
+let getElement = function (name) {
+    return document.querySelector(name);
+};
+let getElements = function (name) {
+    return document.querySelectorAll(name);
+};
+let log = function() {
+    console.log.apply(console, arguments);
+};
+
 function ajaxObject() {
     var xmlHttp;
     try {

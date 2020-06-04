@@ -12,13 +12,13 @@ import java.io.IOException;
 @WebServlet("/BackgroundServlet")
 public class BackgroundServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        String resUrl = UseGet.ImgUrl(request);
+        String resUrl = UseGet.ImgUrl();
 
         //跳转
         response.getWriter().write(resUrl);

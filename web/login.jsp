@@ -10,17 +10,17 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="/MyBlog/css/public.css"/>
-    <link rel="stylesheet" href="/MyBlog/css/login.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/public.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css"/>
 </head>
 <body>
-<div><img id="bg-img" src="https://api.xygeng.cn/bing/1366.php" alt=""></div>
+<div><img id="bg-img" src="" alt=""></div>
 <div id="black"></div>
 <div class="Snow">
     <canvas id="Snow"></canvas>
 </div>
 
-<script src="/MyBlog/js/xue.js" defer></script>
+<script src="${pageContext.request.contextPath}/js/xue.js" defer></script>
 <!--PageEndHtml Block End-->
 <div class="container">
     <div id="btn-div">
@@ -29,7 +29,7 @@
     </div>
     <div id="form-div">
         <form
-                action="/MyBlog/LoginServlet"
+                action="${pageContext.request.contextPath}/LoginServlet"
                 method="post"
                 name="fm">
             <div>
@@ -90,5 +90,5 @@
 
 </div>
 </body>
-<script src="/MyBlog/js/login.js"></script>
+<script src="${pageContext.request.contextPath}/js/login.js"></script>
 </html>

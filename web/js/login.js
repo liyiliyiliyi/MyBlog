@@ -1,3 +1,59 @@
+let getElement = function (name) {
+    return document.querySelector(name);
+};
+let getElements = function (name) {
+    return document.querySelectorAll(name);
+};
+let log = function() {
+    console.log.apply(console, arguments);
+};
+
+function ajaxObject() {
+    var xmlHttp;
+    try {
+        // Firefox, Opera 8.0+, Safari
+        xmlHttp = new XMLHttpRequest();
+    } catch (e) {
+        // Internet Explorer
+        try {
+            xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+            try {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) {
+                alert("您的浏览器不支持AJAX！");
+                return false;
+            }
+        }
+    }
+    return xmlHttp;
+}
+
+// ajax post请求：
+function ajaxSend (url, method, data, fnSucceed, fnFail, fnLoading) {
+    var ajax = ajaxObject();
+    ajax.open(method ,url ,true);
+    ajax.setRequestHeader( "Content-Type" , "application/x-www-form-urlencoded" );
+    ajax.onreadystatechange = function () {
+        if( ajax.readyState == 4 ) {
+            if( ajax.status == 200 ) {
+                fnSucceed( ajax.responseText );
+            }
+            else {
+                fnFail( "HTTP请求错误！错误码："+ajax.status );
+                // console.log("HTTP请求错误！错误码："+ajax.status);
+            }
+        } else {
+            fnLoading();
+        }
+    }
+    ajax.send(data);
+}
+function consoleFun(res) {
+    console.log(res);
+}
+function emptyFun() {}
+
 var opacity_value = 0;
 var bg_img = document.getElementById("black");
 
@@ -54,6 +110,19 @@ function check_repeat() {
         warning_repat.innerHTML = "";
     }
 }
+
+let getBackIMG = function () {
+    ajaxSend('/MyBlog/BackgroundServlet', 'get', '', function (url) {
+        getElement('#bg-img').src = url;
+        log(url);
+    }, consoleFun(), emptyFun());
+};
+
+let __main = function () {
+    window.onload = getBackIMG();
+};
+
+__main();
 //
 // //提供jsonp服务的url地址 (不管是什么类型的地址，最终生成的返回值都是一段javascript代码)
 // //var url = "http://localhost:80/test/jsonp.php";  //  这个路径不是在本地直接打开的文件路径（不能放到服务器里面，也就是www目录下面）

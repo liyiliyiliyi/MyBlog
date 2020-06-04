@@ -4,11 +4,10 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import util.GetUtil;
 
-import javax.servlet.http.HttpServletRequest;
 
 public class UseGet {
 
-    public static String ImgUrl(HttpServletRequest request) {
+    public static String ImgUrl() {
 
         String resUrl = "";
         try {
