@@ -141,7 +141,7 @@
 								<div class="line">
 									<div type="button" class="timeline-content-btn btn"
 										 data-container="body" data-toggle="show" data-placement="right"
-										 data-content="<a href='/servlet/ArticleServlet?id=${axis.id}'>&nbsp;&nbsp;${axis.month}-${axis.day}
+										 data-content="<a href='/MyBlog/ArticleServlet?id=${axis.id}'>&nbsp;&nbsp;${axis.month}-${axis.day}
                       &nbsp;&nbsp;&nbsp;&nbsp;${axis.title}"></div>
 								</div>
 							</c:otherwise>
