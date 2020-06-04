@@ -19,7 +19,7 @@
 <body>
 	<div class="head_line"></div>
 	<div class="container" id="main">
-		<div class="row c_center" style="margin:0, auto;">
+		<div class="row c_center" style="margin:0 auto;">
 			<c:choose>
 				<c:when test="${article==null}">
 					<h4>
@@ -27,7 +27,7 @@
 					</h4>
 				</c:when>
 				<c:otherwise>
-					<h4>成功!是否现在查看文章<a href="/MyBlog/ArticleServlet?id=${article.id}">${article.title}</a></h4>
+					<h4>成功!是否现在查看文章<a href="${pageContext.request.contextPath}/ArticleServlet?id=${article.id}">${article.title}</a></h4>
 				</c:otherwise>
 			</c:choose>	
 		
@@ -37,7 +37,7 @@
 	</div>	
 	<!-- container -->
 	<div id="footer">
-		<a href="/Blog/index.jsp">&nbsp;&nbsp;MyBlog</a>
+		<a href="${pageContext.request.contextPath}/index.jsp">&nbsp;&nbsp;MyBlog</a>
 	</div>
 	<!-- footer -->
 </body>

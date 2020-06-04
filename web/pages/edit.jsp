@@ -16,25 +16,25 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 	<!--引入jQuery-->
-	<script src="/MyBlog/js/jquery-3.4.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery-3.4.1.min.js"></script>
 
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="/MyBlog/css/add.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/add.css" />
 
-	<link rel="stylesheet" href="/MyBlog/pages/editormd/css/editormd.min.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/pages/editormd/css/editormd.min.css" />
 
-	<script src="/MyBlog/pages/editormd/lib/marked.min.js"></script>
-	<script src="/MyBlog/pages/editormd/lib/prettify.min.js"></script>
+	<script src="${pageContext.request.contextPath}/pages/editormd/lib/marked.min.js"></script>
+	<script src="${pageContext.request.contextPath}/pages/editormd/lib/prettify.min.js"></script>
 
-	<script src="/MyBlog/pages/editormd/lib/raphael.min.js"></script>
-	<script src="/MyBlog/pages/editormd/lib/underscore.min.js"></script>
-	<script src="/MyBlog/pages/editormd/lib/sequence-diagram.min.js"></script>
-	<script src="/MyBlog/pages/editormd/lib/flowchart.min.js"></script>
-	<script src="/MyBlog/pages/editormd/lib/jquery.flowchart.min.js"></script>
+	<script src="${pageContext.request.contextPath}/pages/editormd/lib/raphael.min.js"></script>
+	<script src="${pageContext.request.contextPath}/pages/editormd/lib/underscore.min.js"></script>
+	<script src="${pageContext.request.contextPath}/pages/editormd/lib/sequence-diagram.min.js"></script>
+	<script src="${pageContext.request.contextPath}/pages/editormd/lib/flowchart.min.js"></script>
+	<script src="${pageContext.request.contextPath}/pages/editormd/lib/jquery.flowchart.min.js"></script>
 
-	<script src="/MyBlog/pages/editormd/editormd.min.js"></script>
+	<script src="${pageContext.request.contextPath}/pages/editormd/editormd.min.js"></script>
 </head>
 <body id="body">
 <div class="container-fluid">
