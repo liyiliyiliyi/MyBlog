@@ -13,18 +13,16 @@ import java.io.IOException;
 @WebServlet("/servlet/UpdateArticleServlet")
 public class UpdateArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
 
         AdminService as = AdminService.getInstance();
         Article result = as.updateArticle(request);
         request.setAttribute("article", result);
 
-        request.getRequestDispatcher("/pages/result.jsp").forward(request, response);
-
-
+        request.getRequestDispatcher("../pages/result.jsp").forward(request, response);
     }
 }
