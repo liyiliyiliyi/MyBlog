@@ -26,5 +26,4 @@ public class UseGet {
         }
         return resUrl;
     }
-
 }
