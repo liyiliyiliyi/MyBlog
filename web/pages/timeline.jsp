@@ -194,4 +194,5 @@
 
 </script>
 </body>
+<script src="${pageContext.request.contextPath}/js/background.js"></script>
 </html>

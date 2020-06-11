@@ -242,5 +242,6 @@
 		});
 	});
 </script>
+<script src="${pageContext.request.contextPath}/js/background.js"></script>
 </body>
 </html>

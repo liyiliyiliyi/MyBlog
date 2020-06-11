@@ -198,5 +198,6 @@
 	$(window).trigger('scroll');/*触发滚动事件，避免刷新的时候显示回到顶部按钮*/
 
 </script>
+<script src="${pageContext.request.contextPath}/js/background.js"></script>
 </body>
 </html>

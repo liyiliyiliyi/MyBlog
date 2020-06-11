@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-	background: #eee;
+	background: #fff;
 }
 
 a:link {
@@ -34,7 +34,7 @@ a:link {
 
 .foot_line {
 	border-top: 1px solid #C0C0C0;
-	margin-bottom: 20px;
+	margin: 0 150px 10px 150px;
 }
 
 .inline {
@@ -47,6 +47,8 @@ a:link {
 
 #main {
 	width: 68%;
+	padding-top: 20%;
+	padding-bottom: 20%;
 }
 
 #content {

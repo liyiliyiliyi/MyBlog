@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>结果 | MyBlog</title>
+<title>结果</title>
 <!-- Bootstrap core CSS -->
 <link
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -32,13 +32,14 @@
 			</c:choose>	
 		
 			
-		</div>		
-		<div class="foot_line"></div>
+		</div>
 	</div>	
 	<!-- container -->
 	<div id="footer">
+		<div class="foot_line"></div>
 		<a href="${pageContext.request.contextPath}/index.jsp">&nbsp;&nbsp;MyBlog</a>
 	</div>
+	<script src="${pageContext.request.contextPath}/js/background.js"></script>
 	<!-- footer -->
 </body>
 </html>
